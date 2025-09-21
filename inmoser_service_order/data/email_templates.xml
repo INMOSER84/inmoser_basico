@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Email Template for Service Order Assignment -->
+        <record id="email_template_service_assigned" model="mail.template">
+            <field name="name">Service Order: Assigned to Technician</field>
+            <field name="model_id" ref="model_inmoser_service_order"/>
+            <field name="subject">Service Order {{ object.name }} Assigned</field>
+            <field name="email_from">{{ user.email }}</field>
+            <field name="email_to">{{ object.assigned_technician_id.work_email or '' }}</field>
+            <field name="lang">{{ object.assigned_technician_id.user_id.lang }}</field>
+            <field name="body_html"><![CDATA[
+                <p>Dear {{ object.assigned_technician_id.name }},</p>
+                <p>You have been assigned to service order <strong>{{ object.name }}</strong>.</p>
+                <p><strong>Customer:</strong> {{ object.partner_id.name }}</p>
+                <p><strong>Equipment:</strong> {{ object.equipment_id.name }} - {{ object.equipment_id.equipment_type }}</p>
+                <p><strong>Scheduled Date:</strong> {{ object.scheduled_date }}</p>
+                <p><strong>Reported Fault:</strong> {{ object.reported_fault }}</p>
+                <p>Please review the details in the system and prepare for the service visit.</p>
+                <p>Best regards,<br/>Service Department</p>
+            ]]></field>
+        </record>
+
+        <!-- Email Template for Service Order Completion -->
+        <record id="email_template_service_completed" model="mail.template">
+            <field name="name">Service Order: Completed</field>
+            <field name="model_id" ref="model_inmoser_service_order"/>
+            <field name="subject">Service Order {{ object.name }} Completed</field>
+            <field name="email_from">{{ user.email }}</field>
+            <field name="email_to">{{ object.partner_id.email or '' }}</field>
+            <field name="lang">{{ object.partner_id.lang }}</field>
+            <field name="body_html"><![CDATA[
+                <p>Dear {{ object.partner_id.name }},</p>
+                <p>Your service order <strong>{{ object.name }}</strong> has been completed successfully.</p>
+                <p><strong>Equipment:</strong> {{ object.equipment_id.name }}</p>
+                <p><strong>Technician:</strong> {{ object.assigned_technician_id.name }}</p>
+                <p><strong>Work Performed:</strong> {{ object.work_performed }}</p>
+                {% if object.total_amount > 0 %}
+                <p><strong>Total Amount:</strong> {{ object.total_amount }} {{ object.currency_id.name }}</p>
+                {% endif %}
+                <p>Thank you for choosing our services.</p>
+                <p>Best regards,<br/>Service Department</p>
+            ]]></field>
+        </record>
+    </data>
+</odoo>

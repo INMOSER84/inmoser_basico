@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- HR Employee Form View Extension -->
+        <record id="view_employee_form_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.form.inherit.inmoser</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='personal_information']" position="after">
+                    <page string="Technician Information" attrs="{'invisible': [('x_inmoser_is_technician', '=', False)]}">
+                        <group string="Technician Details">
+                            <group>
+                                <field name="x_inmoser_is_technician"/>
+                                <field name="x_inmoser_technician_level"/>
+                            </group>
+                            <group>
+                                <field name="x_inmoser_technician_specialization"/>
+                            </group>
+                        </group>
+                        <group string="Technician Statistics">
+                            <field name="completed_order_count" readonly="1"/>
+                            <field name="average_completion_time" readonly="1"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Portal Service Orders List Template -->
+        <template id="portal_my_service_orders" name="My Service Orders">
+            <t t-call="portal.portal_layout">
+                <t t-set="title">Service Orders</t>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2>My Service Orders</h2>
+                            <div t-if="orders">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Order Number</th>
+                                            <th>Equipment</th>
+                                            <th>Status</th>
+                                            <th>Scheduled Date</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr t-foreach="orders" t-as="order">
+                                            <td>
+                                                <span t-field="order.name"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="order.equipment_id"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="order.state"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="order.scheduled_date"/>
+                                            </td>
+                                            <td>
+                                                <a t-attf-href="/my/service_orders/#{order.id}" class="btn btn-primary btn-sm">
+                                                    View Details
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div t-if="not orders">
+                                <p>No service orders found.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <!-- Portal Service Order Detail Template -->
+        <template id="portal_my_service_order" name="Service Order Details">
+            <t t-call="portal.portal_layout">
+                <t t-set="title" t-value="'Service Order ' + order.name"/>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2>Service Order: <span t-field="order.name"/></h2>
+                            
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h3>Order Information</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p><strong>Status:</strong> <span t-field="order.state"/></p>
+                                            <p><strong>Equipment:</strong> <span t-field="order.equipment_id"/></p>
+                                            <p><strong>Service Type:</strong> <span t-field="order.service_type_id"/></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p><strong>Scheduled Date:</strong> <span t-field="order.scheduled_date"/></p>
+                                            <p><strong>Technician:</strong> <span t-field="order.assigned_technician_id"/></p>
+                                            <p><strong>Priority:</strong> <span t-field="order.priority"/></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h3>Fault Information</h3>
+                                </div>
+                                <div class="card-body">
+                                    <p t-field="order.reported_fault"/>
+                                </div>
+                            </div>
+
+                            <div t-if="order.diagnosis or order.work_performed" class="card mb-4">
+                                <div class="card-header">
+                                    <h3>Service Details</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div t-if="order.diagnosis">
+                                        <h4>Diagnosis</h4>
+                                        <p t-field="order.diagnosis"/>
+                                    </div>
+                                    <div t-if="order.work_performed">
+                                        <h4>Work Performed</h4>
+                                        <p t-field="order.work_performed"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <a href="/my/service_orders" class="btn btn-secondary">Back to List</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Service Order Tree View -->
+        <record id="view_service_order_tree" model="ir.ui.view">
+            <field name="name">inmoser.service.order.tree</field>
+            <field name="model">inmoser.service.order</field>
+            <field name="arch" type="xml">
+                <tree string="Service Orders" decoration-danger="is_overdue" decoration-warning="state in ['draft', 'rescheduled']" decoration-success="state == 'done'">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="equipment_id"/>
+                    <field name="service_type_id"/>
+                    <field name="state"/>
+                    <field name="assigned_technician_id"/>
+                    <field name="scheduled_date"/>
+                    <field name="priority"/>
+                    <field name="total_amount"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Service Order Form View -->
+        <record id="view_service_order_form" model="ir.ui.view">
+            <field name="name">inmoser.service.order.form</field>
+            <field name="model">inmoser.service.order</field>
+            <field name="arch" type="xml">
+                <form string="Service Order">
+                    <header>
+                        <button name="action_assign" string="Assign" type="object" class="btn-primary" states="draft"/>
+                        <button name="action_start_progress" string="Start Progress" type="object" class="btn-primary" states="assigned"/>
+                        <button name="action_request_approval" string="Request Approval" type="object" class="btn-primary" states="in_progress"/>
+                        <button name="action_accept" string="Accept" type="object" class="btn-primary" states="pending_approval" groups="group_inmoser_callcenter"/>
+                        <button name="action_reject" string="Reject" type="object" class="btn-secondary" states="pending_approval" groups="group_inmoser_callcenter"/>
+                        <button name="action_complete" string="Complete" type="object" class="btn-primary" states="accepted"/>
+                        <button name="action_reschedule" string="Reschedule" type="object" class="btn-secondary" states="assigned,in_progress"/>
+                        <button name="action_cancel" string="Cancel" type="object" class="btn-danger" states="draft,assigned,in_progress"/>
+                        <button name="action_create_invoice" string="Create Invoice" type="object" class="btn-primary" states="done" groups="group_inmoser_manager"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,assigned,in_progress,pending_approval,accepted,rescheduled,done,cancelled" clickable="true"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="state" readonly="1"/>
+                                <field name="priority"/>
+                                <field name="scheduled_date"/>
+                            </group>
+                            <group>
+                                <field name="partner_id"/>
+                                <field name="equipment_id"/>
+                                <field name="service_type_id"/>
+                                <field name="assigned_technician_id"/>
+                            </group>
+                        </group>
+                        <group string="Fault Information">
+                            <field name="reported_fault"/>
+                        </group>
+                        <notebook>
+                            <page string="Diagnosis Diagnosis Diagnosis & Workamp; Workamp; Work">
+                                <group>
+                                    <field name="diagnosis"/>
+                                    <field name="work_performed"/>
+                                </group>
+                                <group string="Evidence">
+                                    <field name="photo_before" widget="image" class="oe_avatar"/>
+                                    <field name="photo_after" widget="image" class="oe_avatar"/>
+                                    <field name="customer_signature" widget="image" class="oe_avatar"/>
+                                    <field name="acceptance_status"/>
+                                </group>
+                            </page>
+                            <page string="Refactions">
+                                <field name="refaction_line_ids">
+                                    <tree editable="bottom">
+                                        <field name="product_id"/>
+                                        <field name="quantity"/>
+                                        <field name="unit_price"/>
+                                        <field name="total_price"/>
+                                        <field name="description"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="product_id"/>
+                                            <field name="quantity"/>
+                                            <field name="unit_price"/>
+                                            <field name="total_price"/>
+                                            <field name="description"/>
+                                        </group>
+                                    </form>
+                                </field>
+                                <group>
+                                    <field name="total_amount"/>
+                                    <field name="currency_id" invisible="1"/>
+                                </group>
+                            </page>
+                            <page string="Notes">
+                                <field name="notes"/>
+                            </page>
+                            <page string="Activities" attrs="{'invisible': [('activity_ids', '=', [])]}">
+                                <field name="activity_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Service Order Search View -->
+        <record id="view_service_order_search" model="ir.ui.view">
+            <field name="name">inmoser.service.order.search</field>
+            <field name="model">inmoser.service.order</field>
+            <field name="arch" type="xml">
+                <search string="Search Service Orders">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="equipment_id"/>
+                    <field name="state"/>
+                    <field name="assigned_technician_id"/>
+                    <field name="scheduled_date"/>
+                    <filter string="Overdue" name="overdue" domain="[('is_overdue', '=', True)]"/>
+                    <filter string="This Week" name="this_week" domain="[('scheduled_date', '>=', context_today().strftime('%Y-%m-01')), ('scheduled_date', '&lt;=', (context_today() + datetime.timedelta(days=7)).strftime('%Y-%m-%d'))]"/>
+                    <filter string="Assigned to Me" name="assigned_to_me" domain="[('assigned_technician_id.user_id', '=', uid)]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="State" name="group_by_state" context="{'group_by': 'state'}"/>
+                        <filter string="Technician" name="group_by_technician" context="{'group_by': 'assigned_technician_id'}"/>
+                        <filter string="Service Type" name="group_by_service_type" context="{'group_by': 'service_type_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Service Order Action -->
+        <record id="action_service_order" model="ir.actions.act_window">
+            <field name="name">Service Orders</field>
+            <field name="res_model">inmoser.service.order</field>
+            <field name="view_mode">tree,form,calendar,pivot,graph</field>
+            <field name="context">{'search_default_draft': 1}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first service order!
+                </p>
+            </field>
+        </record>
+
+        <!-- Service Order Kanban View -->
+        <record id="view_service_order_kanban" model="ir.ui.view">
+            <field name="name">inmoser.service.order.kanban</field>
+            <field name="model">inmoser.service.order</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="state">
+                    <field name="name"/>
+                    <field name="state"/>
+                    <field name="assigned_technician_id"/>
+                    <field name="scheduled_date"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="oe_kanban_details">
+                                    <strong>
+                                        <field name="name"/>
+                                    </strong>
+                                    <div>
+                                        <field name="partner_id"/>
+                                    </div>
+                                    <div>
+                                        <field name="equipment_id"/>
+                                    </div>
+                                    <div>
+                                        Status: <field name="state"/>
+                                    </div>
+                                    <div t-if="record.scheduled_date.raw_value">
+                                        Scheduled: <field name="scheduled_date"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+    </data>
+</odoo>

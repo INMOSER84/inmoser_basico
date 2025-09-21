@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Default Service Types -->
+        <record id="service_type_preventive" model="inmoser.service.type">
+            <field name="code">PREVENTIVE</field>
+            <field name="name">Preventive Maintenance</field>
+            <field name="sequence">10</field>
+            <field name="estimated_duration">2.0</field>
+            <field name="standard_price">150.00</field>
+        </record>
+
+        <record id="service_type_corrective" model="inmoser.service.type">
+            <field name="code">CORRECTIVE</field>
+            <field name="name">Corrective Maintenance</field>
+            <field name="sequence">20</field>
+            <field name="estimated_duration">4.0</field>
+            <field name="standard_price">250.00</field>
+        </record>
+
+        <record id="service_type_installation" model="inmoser.service.type">
+            <field name="code">INSTALLATION</field>
+            <field name="name">Installation Service</field>
+            <field name="sequence">30</field>
+            <field name="estimated_duration">3.0</field>
+            <field name="standard_price">200.00</field>
+        </record>
+
+        <record id="service_type_calibration" model="inmoser.service.type">
+            <field name="code">CALIBRATION</field>
+            <field name="name">Calibration Service</field>
+            <field name="sequence">40</field>
+            <field name="estimated_duration">1.5</field>
+            <field name="standard_price">120.00</field>
+        </record>
+
+        <record id="service_type_emergency" model="inmoser.service.type">
+            <field name="code">EMERGENCY</field>
+            <field name="name">Emergency Service</field>
+            <field name="sequence">50</field>
+            <field name="estimated_duration">6.0</field>
+            <field name="standard_price">400.00</field>
+        </record>
+    </data>
+</odoo>

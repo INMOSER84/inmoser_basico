@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-name="inmoser_service_order.buttons">
+        <div class="o_list_buttons">
+            <button type="button" class="btn btn-primary o_button_mass_assign">
+                Mass Assign
+            </button>
+            <t t-call="web.ListView.buttons"/>
+        </div>
+    </t>
+</templates>

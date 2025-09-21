@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Service Type Tree View -->
+        <record id="view_service_type_tree" model="ir.ui.view">
+            <field name="name">inmoser.service.type.tree</field>
+            <field name="model">inmoser.service.type</field>
+            <field name="arch" type="xml">
+                <tree string="Service Types">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="sequence"/>
+                    <field name="estimated_duration"/>
+                    <field name="standard_price"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Service Type Form View -->
+        <record id="view_service_type_form" model="ir.ui.view">
+            <field name="name">inmoser.service.type.form</field>
+            <field name="model">inmoser.service.type</field>
+            <field name="arch" type="xml">
+                <form string="Service Type">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="code"/>
+                                <field name="sequence"/>
+                            </group>
+                            <group>
+                                <field name="estimated_duration"/>
+                                <field name="standard_price"/>
+                                <field name="active"/>
+                            </group>
+                        </group>
+                        <group string="Description">
+                            <field name="description" nolabel="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Service Type Action -->
+        <record id="action_service_types" model="ir.actions.act_window">
+            <field name="name">Service Types</field>
+            <field name="res_model">inmoser.service.type</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>
