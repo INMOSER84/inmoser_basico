@@ -1,0 +1,4 @@
+[submodule "inmoser_service_order/custom-addons/inmoser_basico"]
+	path = inmoser_service_order/custom-addons/inmoser_basico
+	url = https://github.com/INMOSER84/inmoser_basico.git
+	branch = master
