@@ -1,0 +1,8 @@
+[0;34m[INFO][0m 🚀 Iniciando reset completo de Odoo
+[0;34m[INFO][0m 🔍 Verificando puertos 8069 y 5432
+[0;32m[SUCCESS][0m Puertos libres
+[0;32m[SUCCESS][0m Backup guardado: /home/baruc/odoo-inmoser_clean/backups/backup_inmoser17_20250926_035655.sql
+[0;34m[INFO][0m 🧹 Limpiando contenedores y volúmenes
+[0;32m[SUCCESS][0m Contenedores, volúmenes y red eliminados
+[0;34m[INFO][0m 🔍 Validando módulo inmoser_service_order...
+[0;31m[ERROR][0m Validación fallida. Abortando.

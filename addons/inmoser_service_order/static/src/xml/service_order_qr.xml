@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+  <t t-name="inmoser_service_order.QRDialogContent">
+    <div class="text-center">
+      <p class="mb-3">Escanea este código para ver la orden <strong><t t-out="orderName"/></strong></p>
+      <img class="qr-img img-fluid" t-att-src="qrUrl" alt="QR Orden"/>
+      <p class="text-muted mt-3">O accede desde: <a t-att-href="qrUrl" target="_blank"><t t-out="qrUrl"/></a></p>
+    </div>
+  </t>
+</templates>

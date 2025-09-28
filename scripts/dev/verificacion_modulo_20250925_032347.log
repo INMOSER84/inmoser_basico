@@ -1,0 +1,90 @@
+🔍 Verificando módulo: /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order
+✅ Manifest encontrado
+🧪 Validando sintaxis Python...
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/__manifest__.py OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/__init__.py OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/models/res_partner_extension.py OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/models/stock_integration.py OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/models/service_order_business_logic.py OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/models/hr_employee_extension.py OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/models/__init__.py OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/models/qr_code_generator.py OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/models/service_order.py OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/models/service_order_refaction_line.py OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/models/hr_integration.py OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/models/service_equipment.py OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/models/account_integration.py OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/models/service_type.py OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/wizards/__init__.py OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/wizards/service_complete_wizard.py OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/wizards/service_reprogram_wizard.py OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/controllers/main.py OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/controllers/client_portal.py OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/controllers/__init__.py OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/reports/inmoser_service_order/models/__init__.py OK
+🧪 Validando XML...
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/data/service_type_data.xml OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/data/ir_sequence_data.xml OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/data/cron_jobs.xml OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/data/email_templates.xml OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/hr_employee_views.xml OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_complete_wizard_views.xml OK
+/home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_order_views.xml:261: parser error : Unescaped '<' not allowed in attributes values
+ate', '>=', context_today().strftime('%Y-%m-%d 00:00:00')), ('scheduled_date', '
+                                                                               ^
+/home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_order_views.xml:261: parser error : attributes construct error
+ate', '>=', context_today().strftime('%Y-%m-%d 00:00:00')), ('scheduled_date', '
+                                                                               ^
+/home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_order_views.xml:261: parser error : Couldn't find end of Start Tag filter line 261
+ate', '>=', context_today().strftime('%Y-%m-%d 00:00:00')), ('scheduled_date', '
+                                                                               ^
+/home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_order_views.xml:261: parser error : StartTag: invalid element name
+te', '>=', context_today().strftime('%Y-%m-%d 00:00:00')), ('scheduled_date', '<
+                                                                               ^
+/home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_order_views.xml:262: parser error : Unescaped '<' not allowed in attributes values
+lta(days=context_today().weekday())).strftime('%Y-%m-%d')), ('scheduled_date', '
+                                                                               ^
+/home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_order_views.xml:262: parser error : attributes construct error
+lta(days=context_today().weekday())).strftime('%Y-%m-%d')), ('scheduled_date', '
+                                                                               ^
+/home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_order_views.xml:262: parser error : Couldn't find end of Start Tag filter line 262
+lta(days=context_today().weekday())).strftime('%Y-%m-%d')), ('scheduled_date', '
+                                                                               ^
+/home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_order_views.xml:262: parser error : StartTag: invalid element name
+ta(days=context_today().weekday())).strftime('%Y-%m-%d')), ('scheduled_date', '<
+                                                                               ^
+/home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_order_views.xml:263: parser error : Unescaped '<' not allowed in attributes values
+heduled_date', '>=', context_today().strftime('%Y-%m-01')), ('scheduled_date', '
+                                                                               ^
+/home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_order_views.xml:263: parser error : attributes construct error
+heduled_date', '>=', context_today().strftime('%Y-%m-01')), ('scheduled_date', '
+                                                                               ^
+/home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_order_views.xml:263: parser error : Couldn't find end of Start Tag filter line 263
+heduled_date', '>=', context_today().strftime('%Y-%m-01')), ('scheduled_date', '
+                                                                               ^
+/home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_order_views.xml:263: parser error : StartTag: invalid element name
+eduled_date', '>=', context_today().strftime('%Y-%m-01')), ('scheduled_date', '<
+                                                                               ^
+❌ Error XML en: /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_order_views.xml
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/res_partner_views.xml OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_equipment_views.xml OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_type_views.xml OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/portal_templates.xml OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_reprogram_wizard_views.xml OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/menu_items.xml OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/security/inmoser_security.xml OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/reports/service_certificate_template.xml OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/reports/technician_performance_template.xml OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/reports/equipment_history_template.xml OK
+/home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/reports/service_order_template.xml:4: parser error : Extra content at the end of the document
+    <data>
+    ^
+❌ Error XML en: /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/reports/service_order_template.xml
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/reports/service_order_report.xml OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/static/src/xml/calendar_templates.xml OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/static/src/xml/service_order_qr.xml OK
+✅ /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/demo/demo_data.xml OK
+✅ Carpeta 'models' presente
+✅ Carpeta 'views' presente
+✅ Carpeta 'security' presente
+🧾 Verificación completa. Revisa el log: verificacion_modulo_20250925_032347.log

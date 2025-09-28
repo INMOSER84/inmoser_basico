@@ -1,0 +1,158 @@
+/* Inmoser Portal Styles - Customer Facing */
+
+:root {
+  --inmoser-primary: #2E86AB;
+  --inmoser-secondary: #A23B72;
+  --inmoser-success: #F18F01;
+  --inmoser-warning: #C73E1D;
+  --inmoser-info: #87CEEB;
+  --inmoser-light: #F8F9FA;
+  --inmoser-dark: #343A40;
+}
+
+body.portal_inmoser {
+  background-color: #f5f7fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenedor principal */
+.inmoser-portal-wrapper {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 15px;
+}
+
+/* Tarjeta de la orden */
+.inmoser-order-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.inmoser-order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--inmoser-light);
+  padding-bottom: 15px;
+}
+
+.inmoser-order-title {
+  font-size: 1.8rem;
+  color: var(--inmoser-primary);
+  margin: 0;
+}
+
+.inmoser-order-status {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: .9rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: var(--inmoser-primary);
+}
+
+.inmoser-order-status.done       { background-color: #28a745; }
+.inmoser-order-status.cancelled  { background-color: #dc3545; }
+.inmoser-order-status.in_progress{ background-color: var(--inmoser-primary); }
+.inmoser-order-status.assigned   { background-color: var(--inmoser-info); color:#333; }
+.inmoser-order-status.pending_approval{ background-color: var(--inmoser-warning); }
+
+/* Campos de la orden */
+.inmoser-field-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.inmoser-field-row .label {
+  font-weight: 600;
+  color: #555;
+  min-width: 160px;
+}
+
+.inmoser-field-row .value {
+  text-align: right;
+  flex: 1;
+}
+
+/* Botones de acción */
+.inmoser-actions {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.btn-inmoser {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all .3s ease;
+  margin: 5px;
+}
+
+.btn-inmoser-primary {
+  background-color: var(--inmoser-primary);
+  color: #fff;
+}
+.btn-inmoser-primary:hover {
+  background-color: #1e5f7a;
+  color: #fff;
+}
+
+.btn-inmoser-outline {
+  border: 2px solid var(--inmoser-primary);
+  color: var(--inmoser-primary);
+  background: transparent;
+}
+.btn-inmoser-outline:hover {
+  background-color: var(--inmoser-primary);
+  color: #fff;
+}
+
+/* QR */
+.inmoser-qr-box {
+  text-align: center;
+  margin: 25px 0;
+}
+.inmoser-qr-box img {
+  max-width: 220px;
+  border: 2px solid var(--inmoser-primary);
+  border-radius: 10px;
+  padding: 10px;
+  background: #fff;
+}
+
+/* Footer */
+.inmoser-portal-footer {
+  text-align: center;
+  font-size: .8rem;
+  color: #6c757d;
+  margin-top: 40px;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .inmoser-order-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .inmoser-field-row {
+    flex-direction: column;
+  }
+  .inmoser-field-row .value {
+    text-align: left;
+    margin-top: 4px;
+  }
+}

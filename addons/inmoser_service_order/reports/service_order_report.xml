@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <!-- 1. Reporte de Orden de Servicio -->
+    <record id="action_report_service_order" model="ir.actions.report">
+      <field name="name">Service Order Report</field>
+      <field name="model">inmoser.service.order</field>
+      <field name="report_type">qweb-pdf</field>
+      <field name="report_name">inmoser_service_order.service_order_document</field>
+      <field name="report_file">inmoser_service_order.service_order_document</field>
+      <field name="binding_model_id" ref="model_inmoser_service_order"></field>
+      <field name="binding_type">report</field>
+      <field name="paperformat_id" ref="base.paperformat_us"></field>
+    </record>
+    <!-- 2. Certificado de Servicio -->
+    <record id="action_report_service_certificate" model="ir.actions.report">
+      <field name="name">Service Certificate</field>
+      <field name="model">inmoser.service.order</field>
+      <field name="report_type">qweb-pdf</field>
+      <field name="report_name">inmoser_service_order.service_certificate_document</field>
+      <field name="report_file">inmoser_service_order.service_certificate_document</field>
+      <field name="binding_model_id" ref="model_inmoser_service_order"></field>
+      <field name="binding_type">report</field>
+      <field name="paperformat_id" ref="base.paperformat_us"></field>
+    </record>
+    <!-- 3. Rendimiento de Técnicos -->
+    <record id="action_report_technician_performance" model="ir.actions.report">
+      <field name="name">Technician Performance Report</field>
+      <field name="model">hr.employee</field>
+      <field name="report_type">qweb-pdf</field>
+      <field name="report_name">inmoser_service_order.technician_performance_document</field>
+      <field name="report_file">inmoser_service_order.technician_performance_document</field>
+      <field name="binding_model_id" ref="hr.model_hr_employee"></field>
+      <field name="binding_type">report</field>
+      <field name="paperformat_id" ref="base.paperformat_us"></field>
+    </record>
+    <!-- 4. Historial de Equipos -->
+    <record id="action_report_equipment_history" model="ir.actions.report">
+      <field name="name">Equipment Service History</field>
+      <field name="model">inmoser.service.equipment</field>
+      <field name="report_type">qweb-pdf</field>
+      <field name="report_name">inmoser_service_order.equipment_history_document</field>
+      <field name="report_file">inmoser_service_order.equipment_history_document</field>
+      <field name="binding_model_id" ref="model_inmoser_service_equipment"></field>
+      <field name="binding_type">report</field>
+      <field name="paperformat_id" ref="base.paperformat_us"></field>
+    </record>
+    <!-- ========================================================== -->
+    <!-- MENÚS DE REPORTES                                          -->
+    <!-- ========================================================== -->
+    <menuitem id="menu_inmoser_reports" name="Reports" parent="menu_inmoser_root" sequence="90"/>
+    <menuitem id="menu_service_order_reports" name="Service Order Reports" parent="menu_inmoser_reports" sequence="10"/>
+    <menuitem id="menu_technician_reports" name="Technician Reports" parent="menu_inmoser_reports" sequence="20"/>
+    <menuitem id="menu_equipment_reports" name="Equipment Reports" parent="menu_inmoser_reports" sequence="30"/>
+    <menuitem id="menu_financial_reports" name="Financial Reports" parent="menu_inmoser_reports" sequence="40"/>
+  </data>
+</odoo>

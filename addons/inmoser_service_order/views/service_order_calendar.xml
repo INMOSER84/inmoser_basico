@@ -1,0 +1,14 @@
+<odoo>
+    <record id="action_service_order_calendar" model="ir.actions.act_window">
+        <field name="name">Service Order Calendar</field>
+        <field name="res_model">inmoser.service.order</field>
+        <field name="view_mode">calendar,tree,form</field>
+    </record>
+    <record id="view_service_order_calendar" model="ir.ui.view">
+        <field name="name">inmoser.service.order.calendar</field>
+        <field name="model">inmoser.service.order</field>
+        <field name="arch" type="xml">
+            <calendar string="Service Order Calendar" date_start="scheduled_date" color="state"/>
+        </field>
+    </record>
+</odoo>

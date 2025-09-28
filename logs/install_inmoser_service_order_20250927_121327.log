@@ -1,0 +1,125 @@
+2025-09-27 18:14:52,975 1 INFO ? odoo: Odoo version 17.0-20250918 
+2025-09-27 18:14:52,976 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2025-09-27 18:14:52,976 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/17.0', '/mnt/extra-addons'] 
+2025-09-27 18:14:52,976 1 INFO ? odoo: database: odoo@db:5432 
+2025-09-27 18:14:53,206 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2025-09-27 18:14:53,604 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 52aa40fa5b6a:8069 
+2025-09-27 18:14:53,650 1 INFO inmoser17 odoo.modules.loading: loading 1 modules... 
+2025-09-27 18:14:53,672 1 INFO inmoser17 odoo.modules.loading: 1 modules loaded in 0.02s, 0 queries (+0 extra) 
+2025-09-27 18:14:53,747 1 INFO inmoser17 odoo.modules.loading: updating modules list 
+2025-09-27 18:14:53,752 1 INFO inmoser17 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2025-09-27 18:14:56,655 1 INFO inmoser17 odoo.addons.base.models.ir_module: ALLOW access to module.button_install on ['Inmoser Service Order Management'] to user __system__ #1 via n/a 
+2025-09-27 18:14:57,113 1 INFO inmoser17 odoo.modules.loading: loading 11 modules... 
+2025-09-27 18:14:57,278 1 INFO inmoser17 odoo.modules.loading: 11 modules loaded in 0.16s, 0 queries (+0 extra) 
+2025-09-27 18:14:57,298 1 INFO inmoser17 odoo.modules.loading: loading 93 modules... 
+2025-09-27 18:14:57,298 1 INFO inmoser17 odoo.modules.loading: Loading module social_media (2/93) 
+2025-09-27 18:14:57,435 1 INFO inmoser17 odoo.modules.registry: module social_media: creating or updating database tables 
+2025-09-27 18:14:57,638 1 INFO inmoser17 odoo.modules.loading: loading social_media/views/res_company_views.xml 
+2025-09-27 18:14:57,680 1 INFO inmoser17 odoo.modules.loading: Module social_media: loading demo 
+2025-09-27 18:14:57,682 1 INFO inmoser17 odoo.modules.loading: loading social_media/demo/res_company_demo.xml 
+2025-09-27 18:14:57,736 1 INFO inmoser17 odoo.modules.loading: Module social_media loaded in 0.44s, 69 queries (+69 other) 
+2025-09-27 18:14:57,736 1 INFO inmoser17 odoo.modules.loading: Loading module uom (3/93) 
+2025-09-27 18:14:57,800 1 INFO inmoser17 odoo.modules.registry: module uom: creating or updating database tables 
+2025-09-27 18:14:57,999 1 INFO inmoser17 odoo.modules.loading: loading uom/data/uom_data.xml 
+2025-09-27 18:14:58,267 1 INFO inmoser17 odoo.modules.loading: loading uom/security/uom_security.xml 
+2025-09-27 18:14:58,338 1 INFO inmoser17 odoo.modules.loading: loading uom/security/ir.model.access.csv 
+2025-09-27 18:14:58,388 1 INFO inmoser17 odoo.modules.loading: loading uom/views/uom_uom_views.xml 
+2025-09-27 18:14:58,574 1 INFO inmoser17 odoo.addons.uom.tests.test_uom: Starting TestUom.test_10_conversion ... 
+2025-09-27 18:14:58,593 1 INFO inmoser17 odoo.addons.uom.tests.test_uom: Starting TestUom.test_20_rounding ... 
+2025-09-27 18:14:58,626 1 INFO inmoser17 odoo.addons.uom.tests.test_uom: Starting TestUom.test_30_reference_uniqueness ... 
+2025-09-27 18:14:58,666 1 INFO inmoser17 odoo.addons.uom.tests.test_uom: Starting TestUom.test_40_custom_uom ... 
+2025-09-27 18:14:58,712 1 INFO inmoser17 odoo.addons.uom.tests.test_uom: Starting TestUom.test_50_check_ratio ... 
+2025-09-27 18:14:58,790 1 INFO inmoser17 odoo.addons.base.models.ir_attachment: filestore gc 56 checked, 0 removed 
+2025-09-27 18:14:58,813 1 INFO inmoser17 odoo.modules.loading: Module uom loaded in 1.08s (incl. 0.26s test), 278 queries (+87 test, +278 other) 
+2025-09-27 18:14:58,813 1 INFO inmoser17 odoo.modules.loading: Loading module barcodes (6/93) 
+2025-09-27 18:14:58,870 1 INFO inmoser17 odoo.modules.registry: module barcodes: creating or updating database tables 
+2025-09-27 18:14:59,097 1 INFO inmoser17 odoo.modules.loading: loading barcodes/data/barcodes_data.xml 
+2025-09-27 18:14:59,135 1 INFO inmoser17 odoo.modules.loading: loading barcodes/views/barcodes_view.xml 
+2025-09-27 18:14:59,197 1 INFO inmoser17 odoo.modules.loading: loading barcodes/security/ir.model.access.csv 
+2025-09-27 18:14:59,272 1 INFO inmoser17 odoo.addons.barcodes.tests.test_barcode_nomenclature: Starting TestBarcodeNomenclature.test_barcode_nomenclature_parse_barcode_ean13_01 ... 
+2025-09-27 18:14:59,278 1 INFO inmoser17 odoo.addons.barcodes.tests.test_barcode_nomenclature: Starting TestBarcodeNomenclature.test_barcode_nomenclature_parse_barcode_ean13_02_sequence ... 
+2025-09-27 18:14:59,304 1 INFO inmoser17 odoo.addons.barcodes.tests.test_barcode_nomenclature: Starting TestBarcodeNomenclature.test_barcode_nomenclature_parse_barcode_ean8_01 ... 
+2025-09-27 18:14:59,320 1 INFO inmoser17 odoo.addons.barcodes.tests.test_barcode_nomenclature: Starting TestBarcodeNomenclature.test_barcode_nomenclature_parse_barcode_ean8_02_validation_error ... 
+2025-09-27 18:14:59,369 1 INFO inmoser17 odoo.addons.barcodes.tests.test_barcode_nomenclature: Starting TestBarcodeNomenclature.test_barcode_nomenclature_parse_barcode_ean8_03_value ... 
+2025-09-27 18:14:59,376 1 INFO inmoser17 odoo.addons.barcodes.tests.test_barcode_nomenclature: Starting TestBarcodeNomenclature.test_barcode_nomenclature_parse_barcode_ean8_04_multiple_rules ... 
+2025-09-27 18:14:59,452 1 INFO inmoser17 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2025-09-27 18:14:59,478 1 INFO inmoser17 odoo.modules.loading: Module barcodes loaded in 0.67s (incl. 0.19s test), 135 queries (+76 test, +135 other) 
+2025-09-27 18:14:59,478 1 INFO inmoser17 odoo.modules.loading: Loading module http_routing (11/93) 
+2025-09-27 18:14:59,552 1 INFO inmoser17 odoo.modules.registry: module http_routing: creating or updating database tables 
+2025-09-27 18:14:59,578 1 INFO inmoser17 odoo.modules.loading: loading http_routing/views/http_routing_template.xml 
+2025-09-27 18:14:59,669 1 INFO inmoser17 odoo.modules.loading: loading http_routing/views/res_lang_views.xml 
+2025-09-27 18:14:59,758 1 INFO inmoser17 odoo.modules.loading: Module http_routing loaded in 0.28s, 71 queries (+71 other) 
+2025-09-27 18:14:59,759 1 INFO inmoser17 odoo.modules.loading: Loading module onboarding (12/93) 
+2025-09-27 18:14:59,841 1 INFO inmoser17 odoo.modules.registry: module onboarding: creating or updating database tables 
+2025-09-27 18:15:00,306 1 INFO inmoser17 odoo.modules.loading: loading onboarding/views/onboarding_templates.xml 
+2025-09-27 18:15:00,363 1 INFO inmoser17 odoo.modules.loading: loading onboarding/views/onboarding_views.xml 
+2025-09-27 18:15:00,434 1 INFO inmoser17 odoo.modules.loading: loading onboarding/views/onboarding_menus.xml 
+2025-09-27 18:15:00,480 1 INFO inmoser17 odoo.modules.loading: loading onboarding/security/ir.model.access.csv 
+2025-09-27 18:15:01,892 1 INFO inmoser17 odoo.addons.onboarding.tests.test_onboarding: Starting TestOnboarding.test_onboarding_completion_global ... 
+2025-09-27 18:15:02,232 1 INFO inmoser17 odoo.addons.onboarding.tests.test_onboarding: Starting TestOnboarding.test_onboarding_completion_per_company ... 
+2025-09-27 18:15:02,268 1 INFO inmoser17 odoo.models.unlink: User #1 deleted onboarding.progress records with IDs: [2, 1] 
+2025-09-27 18:15:02,305 1 INFO inmoser17 odoo.addons.onboarding.tests.test_onboarding: Starting TestOnboarding.test_onboarding_shared_steps ... 
+2025-09-27 18:15:02,344 1 INFO inmoser17 odoo.addons.onboarding.tests.test_onboarding: Starting TestOnboarding.test_onboarding_step_without_onboarding ... 
+2025-09-27 18:15:02,417 1 INFO inmoser17 odoo.models.unlink: User #1 deleted onboarding.progress records with IDs: [6] 
+2025-09-27 18:15:02,463 1 INFO inmoser17 odoo.addons.onboarding.tests.test_onboarding: Starting TestOnboarding.test_onboarding_to_company_change ... 
+2025-09-27 18:15:02,545 1 INFO inmoser17 odoo.models.unlink: User #1 deleted onboarding.progress.step records with IDs: [11] 
+2025-09-27 18:15:02,562 1 INFO inmoser17 odoo.models.unlink: User #1 deleted onboarding.progress records with IDs: [2, 1] 
+2025-09-27 18:15:02,581 1 INFO inmoser17 odoo.addons.onboarding.tests.test_onboarding: Starting TestOnboarding.test_progress_no_company_uniqueness ... 
+2025-09-27 18:15:02,593 1 INFO inmoser17 odoo.addons.onboarding.tests.test_onboarding: Starting TestOnboarding.test_progress_per_company_uniqueness ... 
+2025-09-27 18:15:02,613 1 INFO inmoser17 odoo.models.unlink: User #1 deleted onboarding.progress records with IDs: [2, 1] 
+2025-09-27 18:15:02,652 1 INFO inmoser17 odoo.addons.onboarding.tests.test_onboarding: Starting TestOnboarding.test_remove_company_with_progress ... 
+2025-09-27 18:15:02,652 1 INFO inmoser17 odoo.addons.onboarding.tests.test_onboarding: skipped TestOnboarding.test_remove_company_with_progress : Company deletion can fail because of other foreign key constraints. 
+2025-09-27 18:15:02,699 1 INFO inmoser17 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2025-09-27 18:15:02,727 1 INFO inmoser17 odoo.modules.loading: Module onboarding loaded in 2.97s (incl. 1.41s test), 237 queries (+492 test, +237 other) 
+2025-09-27 18:15:02,727 1 INFO inmoser17 odoo.modules.loading: Loading module resource (13/93) 
+2025-09-27 18:15:02,809 1 INFO inmoser17 odoo.modules.registry: module resource: creating or updating database tables 
+2025-09-27 18:15:03,256 1 INFO inmoser17 odoo.modules.loading: loading resource/data/resource_data.xml 
+2025-09-27 18:15:03,294 1 INFO inmoser17 odoo.modules.loading: loading resource/security/ir.model.access.csv 
+2025-09-27 18:15:03,312 1 INFO inmoser17 odoo.modules.loading: loading resource/security/resource_security.xml 
+2025-09-27 18:15:03,374 1 INFO inmoser17 odoo.modules.loading: loading resource/views/resource_resource_views.xml 
+2025-09-27 18:15:03,443 1 INFO inmoser17 odoo.modules.loading: loading resource/views/resource_calendar_leaves_views.xml 
+2025-09-27 18:15:03,557 1 INFO inmoser17 odoo.modules.loading: loading resource/views/resource_calendar_attendance_views.xml 
+2025-09-27 18:15:03,602 1 INFO inmoser17 odoo.modules.loading: loading resource/views/resource_calendar_views.xml 
+2025-09-27 18:15:03,654 1 INFO inmoser17 odoo.modules.loading: loading resource/views/menuitems.xml 
+2025-09-27 18:15:03,765 1 INFO inmoser17 odoo.modules.loading: Module resource: loading demo 
+2025-09-27 18:15:03,766 1 INFO inmoser17 odoo.modules.loading: loading resource/data/resource_demo.xml 
+2025-09-27 18:15:03,828 1 INFO inmoser17 odoo.addons.resource.tests.test_utils: Starting TestExpression.test_filter_domain_leaf ... 
+2025-09-27 18:15:03,835 1 INFO inmoser17 odoo.addons.resource.tests.test_utils: Starting TestExpression.test_resource_creation_with_date_from ... 
+2025-09-27 18:15:04,055 1 INFO inmoser17 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2025-09-27 18:15:04,086 1 INFO inmoser17 odoo.modules.loading: Module resource loaded in 1.36s (incl. 0.23s test), 419 queries (+35 test, +419 other) 
+2025-09-27 18:15:04,087 1 INFO inmoser17 odoo.modules.loading: Loading module utm (14/93) 
+2025-09-27 18:15:04,159 1 INFO inmoser17 odoo.modules.registry: module utm: creating or updating database tables 
+2025-09-27 18:15:04,487 1 INFO inmoser17 odoo.modules.loading: loading utm/data/utm_medium_data.xml 
+2025-09-27 18:15:04,584 1 INFO inmoser17 odoo.modules.loading: loading utm/data/utm_source_data.xml 
+2025-09-27 18:15:04,675 1 INFO inmoser17 odoo.modules.loading: loading utm/data/utm_stage_data.xml 
+2025-09-27 18:15:04,690 1 INFO inmoser17 odoo.modules.loading: loading utm/data/utm_tag_data.xml 
+2025-09-27 18:15:04,703 1 INFO inmoser17 odoo.modules.loading: loading utm/views/utm_campaign_views.xml 
+2025-09-27 18:15:04,756 1 INFO inmoser17 odoo.modules.loading: loading utm/views/utm_medium_views.xml 
+2025-09-27 18:15:04,828 1 INFO inmoser17 odoo.modules.loading: loading utm/views/utm_source_views.xml 
+2025-09-27 18:15:04,864 1 INFO inmoser17 odoo.modules.loading: loading utm/views/utm_stage_views.xml 
+2025-09-27 18:15:04,922 1 INFO inmoser17 odoo.modules.loading: loading utm/views/utm_tag_views.xml 
+2025-09-27 18:15:04,942 1 INFO inmoser17 odoo.modules.loading: loading utm/views/utm_menus.xml 
+2025-09-27 18:15:05,043 1 INFO inmoser17 odoo.modules.loading: loading utm/security/ir.model.access.csv 
+2025-09-27 18:15:05,091 1 INFO inmoser17 odoo.modules.loading: Module utm: loading demo 
+2025-09-27 18:15:05,092 1 INFO inmoser17 odoo.modules.loading: loading utm/data/utm_campaign_demo.xml 
+2025-09-27 18:15:05,134 1 INFO inmoser17 odoo.modules.loading: loading utm/data/utm_stage_demo.xml 
+2025-09-27 18:15:05,209 1 INFO inmoser17 odoo.modules.loading: Module utm loaded in 1.12s, 435 queries (+435 other) 
+2025-09-27 18:15:05,209 1 INFO inmoser17 odoo.modules.loading: Loading module web_hierarchy (15/93) 
+2025-09-27 18:15:05,262 1 INFO inmoser17 odoo.modules.registry: module web_hierarchy: creating or updating database tables 
+2025-09-27 18:15:07,011 1 INFO inmoser17 odoo.modules.loading: Module web_hierarchy loaded in 1.80s, 969 queries (+969 other) 
+2025-09-27 18:15:07,012 1 INFO inmoser17 odoo.modules.loading: Loading module barcodes_gs1_nomenclature (17/93) 
+2025-09-27 18:15:07,091 1 INFO inmoser17 odoo.modules.registry: module barcodes_gs1_nomenclature: creating or updating database tables 
+2025-09-27 18:15:07,165 1 INFO inmoser17 odoo.modules.loading: loading barcodes_gs1_nomenclature/data/barcodes_gs1_rules.xml 
+2025-09-27 18:15:07,342 1 INFO inmoser17 odoo.modules.loading: loading barcodes_gs1_nomenclature/views/barcodes_view.xml 
+2025-09-27 18:15:07,445 1 INFO inmoser17 odoo.addons.barcodes_gs1_nomenclature.tests.test_barcodes_gs1_nomenclature: Starting TestBarcodeGS1Nomenclature.test_gs1_date_to_date ... 
+2025-09-27 18:15:07,449 1 INFO inmoser17 odoo.addons.barcodes_gs1_nomenclature.tests.test_barcodes_gs1_nomenclature: Starting TestBarcodeGS1Nomenclature.test_gs1_extanded_barcode_1 ... 
+2025-09-27 18:15:07,478 1 INFO inmoser17 odoo.addons.barcodes_gs1_nomenclature.tests.test_barcodes_gs1_nomenclature: Starting TestBarcodeGS1Nomenclature.test_gs1_extanded_barcode_2_decimal ... 
+2025-09-27 18:15:07,584 1 INFO inmoser17 odoo.addons.base.models.ir_attachment: filestore gc 1 checked, 0 removed 
+2025-09-27 18:15:07,613 1 INFO inmoser17 odoo.modules.loading: Module barcodes_gs1_nomenclature loaded in 0.60s (incl. 0.14s test), 189 queries (+36 test, +189 other) 
+2025-09-27 18:15:07,614 1 INFO inmoser17 odoo.modules.loading: Loading module google_recaptcha (18/93) 
+2025-09-27 18:15:07,676 1 INFO inmoser17 odoo.modules.registry: module google_recaptcha: creating or updating database tables 
+2025-09-27 18:15:07,742 1 INFO inmoser17 odoo.modules.loading: loading google_recaptcha/views/res_config_settings_view.xml 
+2025-09-27 18:15:07,845 1 INFO inmoser17 odoo.modules.loading: Module google_recaptcha loaded in 0.23s, 64 queries (+64 other) 
+2025-09-27 18:15:07,846 1 INFO inmoser17 odoo.modules.loading: Loading module mail (20/93) 
+2025-09-27 18:15:07,939 1 INFO inmoser17 odoo.modules.registry: module mail: creating or updating database tables 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                

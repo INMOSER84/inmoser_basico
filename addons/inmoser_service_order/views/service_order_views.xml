@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_service_order_form" model="ir.ui.view">
+            <field name="name">inmoser.service.order.form</field>
+            <field name="model">inmoser.service.order</field>
+            <field name="arch" type="xml">
+                <form title="Service Order">
+                    <header>
+                        <button name="action_assign_technician" type="object" string="Assign Technician" class="oe_highlight" invisible="state != 'draft'"/>
+                        <button name="action_start_service" type="object" string="Start Service" class="oe_highlight" invisible="state != 'assigned'"/>
+                        <button name="action_request_approval" type="object" string="Request Approval" class="oe_highlight" invisible="state != 'in_progress'"/>
+                        <button name="action_customer_accept" type="object" string="Accept" class="oe_highlight" invisible="state != 'pending_approval'"/>
+                        <button name="action_customer_reject" type="object" string="Reject" invisible="state != 'pending_approval'"/>
+                        <button name="action_complete_service" type="object" string="Complete Service" class="oe_highlight" invisible="state != 'accepted'"/>
+                        <button name="action_reschedule" type="object" string="Reschedule" invisible="state in ['done', 'cancelled']"/>
+                        <button name="action_cancel" type="object" string="Cancel" invisible="state in ['done', 'cancelled']"/>
+                        <button name="action_generate_invoice" type="object" string="Generate Invoice" invisible="state != 'done' or invoice_id"/>
+                        <button name="action_view_qr" type="object" string="View QR" class="oe_stat_button" icon="fa-qrcode"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,assigned,in_progress,pending_approval,accepted,done"></field>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_view_refactions" type="object" class="oe_stat_button" icon="fa-cogs">
+                                <field name="refaction_count" widget="statbutton" string="Refactions"></field>
+                            </button>
+                            <button name="%(action_service_order_calendar)d" type="action" class="oe_stat_button" icon="fa-calendar">
+                                <div class="o_stat_info">
+                                    <span class="o_stat_text">Calendar</span>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <h1><field name="name" readonly="1"></field></h1>
+                        </div>
+                        <group>
+                            <group name="customer_info" string="Customer Information">
+                                <field name="partner_id" options="{'no_create': True}"></field>
+                                <field name="equipment_id" domain="[('partner_id', '=', partner_id)]" context="{'default_partner_id': partner_id}"></field>
+                                <field name="service_type_id"></field>
+                                <field name="priority" widget="priority"></field>
+                            </group>
+                            <group name="service_info" string="Service Information">
+                                <field name="assigned_technician_id" domain="[('x_inmoser_is_technician', '=', True)]"></field>
+                                <field name="scheduled_date"></field>
+                                <field name="start_date" readonly="1"></field>
+                                <field name="end_date" readonly="1"></field>
+                                <field name="duration" readonly="1" widget="float_time"></field>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Service Details" name="service_details">
+                                <group>
+                                    <group string="Reported Issue">
+                                        <field name="reported_fault" nolabel="1" placeholder="Describe the fault reported by the customer..."></field>
+                                    </group>
+                                    <group string="Diagnosis" invisible="state in ['draft', 'assigned']">
+                                        <field name="diagnosis" nolabel="1" placeholder="Technical diagnosis of the problem..."></field>
+                                    </group>
+                                </group>
+                                <group string="Work Performed" invisible="state in ['draft', 'assigned', 'in_progress']">
+                                    <field name="work_performed" nolabel="1" placeholder="Describe the work performed..."></field>
+                                </group>
+                            </page>
+                            <page string="Refactions" name="refactions">
+                                <field name="refaction_line_ids">
+                                    <tree editable="bottom">
+                                        <field name="sequence" widget="handle"></field>
+                                        <field name="product_id" domain="[('type', 'in', ['product', 'consu'])]"></field>
+                                        <field name="description"></field>
+                                        <field name="quantity"></field>
+                                        <field name="product_uom_id" readonly="1"></field>
+                                        <field name="unit_price"></field>
+                                        <field name="total_price" readonly="1"></field>
+                                        <field name="available_qty" readonly="1" column_invisible="parent.state in ['draft', 'assigned']"></field>
+                                    </tree>
+                                </field>
+                                <group class="oe_subtotal_footer oe_right">
+                                    <field name="total_amount" readonly="1"></field>
+                                    <field name="currency_id" invisible="1"></field>
+                                </group>
+                            </page>
+                            <page string="Customer Approval" name="approval" invisible="state in ['draft', 'assigned']">
+                                <group>
+                                    <group string="Approval Status">
+                                        <field name="acceptance_status" widget="radio"></field>
+                                        <field name="customer_signature" widget="image" invisible="acceptance_status != 'accepted'"></field>
+                                    </group>
+                                    <group string="Rejection Details" invisible="acceptance_status != 'rejected'">
+                                        <field name="rejection_reason" nolabel="1" placeholder="Reason for rejection..."></field>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Evidence Photos" name="photos" invisible="state in ['draft', 'assigned']">
+                                <group>
+                                    <group string="Before Service">
+                                        <field name="photo_before" widget="image" options="{'size': [300, 200]}"></field>
+                                    </group>
+                                    <group string="After Service" invisible="state != 'done'">
+                                        <field name="photo_after" widget="image" options="{'size': [300, 200]}"></field>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Financial" name="financial" invisible="state in ['draft', 'assigned']">
+                                <group>
+                                    <group string="Pricing">
+                                        <field name="total_amount" readonly="1"></field>
+                                        <field name="currency_id"></field>
+                                    </group>
+                                    <group string="Invoice" invisible="not invoice_id">
+                                        <field name="invoice_id" readonly="1"></field>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Internal Notes" name="notes">
+                                <field name="notes" placeholder="Internal notes and comments..."></field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"></field>
+                        <field name="activity_ids"></field>
+                        <field name="message_ids"></field>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_service_order_tree" model="ir.ui.view">
+            <field name="name">inmoser.service.order.tree</field>
+            <field name="model">inmoser.service.order</field>
+            <field name="arch" type="xml">
+                <tree string="Service Orders"
+                    decoration-info="state == 'draft'"
+                    decoration-warning="state == 'assigned'"
+                    decoration-success="state == 'done'"
+                    decoration-danger="state == 'cancelled'">
+                    <field name="name" string="Reference"></field>
+                    <field name="partner_id" string="Customer"></field>
+                    <field name="equipment_id" string="Equipment"></field>
+                    <field name="service_type_id" string="Type"></field>
+                    <field name="assigned_technician_id" string="Technician"></field>
+                    <field name="scheduled_date" string="Scheduled"></field>
+                    <field name="priority" widget="priority"></field>
+                    <field name="state" widget="badge"
+                            decoration-info="state == 'draft'"
+                            decoration-warning="state in ['assigned', 'in_progress']"
+                            decoration-success="state == 'done'"
+                            decoration-danger="state == 'cancelled'"/>
+                    <field name="total_amount" sum="Total"></field>
+                    <field name="currency_id" invisible="1"></field>
+                    <field name="is_overdue" invisible="1"></field>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_service_order_kanban" model="ir.ui.view">
+            <field name="name">inmoser.service.order.kanban</field>
+            <field name="model">inmoser.service.order</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="state" class="o_kanban_small_column">
+                    <field name="name"></field>
+                    <field name="partner_id"></field>
+                    <field name="equipment_id"></field>
+                    <field name="assigned_technician_id"></field>
+                    <field name="scheduled_date"></field>
+                    <field name="priority"></field>
+                    <field name="state"></field>
+                    <field name="total_amount"></field>
+                    <field name="currency_id"></field>
+                    <field name="is_overdue"></field>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click #{record.is_overdue.raw_value ? 'oe_kanban_card_danger' : ''}">
+                                <div class="o_dropdown_kanban dropdown">
+                                    <a class="dropdown-toggle o-no-caret btn" role="button" data-toggle="dropdown" href="#" aria-label="Dropdown menu" title="Dropdown menu">
+                                        <span class="fa fa-ellipsis-v"/>
+                                    </a>
+                                    <div class="dropdown-menu" role="menu">
+                                        <a t-if="widget.editable" role="menuitem" type="edit" class="dropdown-item">Edit</a>
+                                        <a t-if="widget.deletable" role="menuitem" type="delete" class="dropdown-item">Delete</a>
+                                    </div>
+                                </div>
+                                <div class="oe_kanban_content">
+                                    <div class="oe_kanban_details">
+                                        <strong class="o_kanban_record_title"><field name="name"></field></strong>
+                                        <div class="o_kanban_record_subtitle"><field name="partner_id"></field></div>
+                                        <div class="o_kanban_record_body">
+                                            <field name="equipment_id"></field><br/>
+                                            <t t-if="record.assigned_technician_id.raw_value">
+                                                <i title="user" aria-label="user" class="fa fa-user"/> <field name="assigned_technician_id"></field><br/>
+                                            </t>
+                                            <t t-if="record.scheduled_date.raw_value">
+                                                <i title="calendar" aria-label="calendar" class="fa fa-calendar"/> <field name="scheduled_date"></field>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="oe_kanban_footer">
+                                    <div class="oe_kanban_footer_left">
+                                        <span class="oe_kanban_bottom_right">
+                                            <field name="total_amount" widget="monetary"></field>
+                                        </span>
+                                    </div>
+                                    <div class="oe_kanban_footer_right">
+                                        <field name="priority" widget="priority"></field>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="view_service_order_calendar" model="ir.ui.view">
+            <field name="name">inmoser.service.order.calendar</field>
+            <field name="model">inmoser.service.order</field>
+            <field name="arch" type="xml">
+                <calendar title="Service Orders Calendar" js_class="technician_calendar"
+                          date_start="scheduled_date"
+                          color="assigned_technician_id"
+                          quick_add="False"
+                          mode="month">
+                    <field name="name"></field>
+                    <field name="partner_id"></field>
+                    <field name="equipment_id"></field>
+                    <field name="assigned_technician_id"></field>
+                    <field name="state"></field>
+                </calendar>
+            </field>
+        </record>
+
+        <record id="view_service_order_search" model="ir.ui.view">
+            <field name="name">inmoser.service.order.search</field>
+            <field name="model">inmoser.service.order</field>
+            <field name="arch" type="xml">
+                <search string="Service Orders">
+                    <field name="name" string="Order Number"></field>
+                    <field name="partner_id" string="Customer"></field>
+                    <field name="equipment_id" string="Equipment"></field>
+                    <field name="assigned_technician_id" string="Technician"></field>
+                    <field name="service_type_id" string="Service Type"></field>
+                    <field name="reported_fault" string="Reported Fault"></field>
+                    <filter string="My Orders" name="my_orders" domain="[('assigned_technician_id.user_id', '=', uid)]"/>
+                    <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
+                    <filter string="Assigned" name="assigned" domain="[('state', '=', 'assigned')]"/>
+                    <filter string="In Progress" name="in_progress" domain="[('state', '=', 'in_progress')]"/>
+                    <filter string="Pending Approval" name="pending_approval" domain="[('state', '=', 'pending_approval')]"/>
+                    <filter string="Accepted" name="accepted" domain="[('state', '=', 'accepted')]"/>
+                    <filter string="Done" name="done" domain="[('state', '=', 'done')]"/>
+                    <filter string="Overdue" name="overdue" domain="[('is_overdue', '=', True)]"/>
+                    <filter string="High Priority" name="high_priority" domain="[('priority', 'in', ['high', 'urgent'])]"/>
+                    <separator/>
+                    <filter string="Today" name="today" domain="[('scheduled_date', '&gt;=', context_today().strftime('%Y-%m-%d 00:00:00')), ('scheduled_date', '&lt;=', context_today().strftime('%Y-%m-%d 23:59:59'))]"/>
+                    <filter string="This Week" name="this_week" domain="[('scheduled_date', '&gt;=', (context_today() - relativedelta(days=context_today().weekday())).strftime('%Y-%m-%d')), ('scheduled_date', '&lt;', (context_today() - relativedelta(days=context_today().weekday()) + relativedelta(days=7)).strftime('%Y-%m-%d'))]"/>
+                    <filter string="This Month" name="this_month" domain="[('scheduled_date', '&gt;=', context_today().strftime('%Y-%m-01')), ('scheduled_date', '&lt;', (context_today() + relativedelta(months=1)).strftime('%Y-%m-01'))]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Customer" name="group_customer" context="{'group_by': 'partner_id'}"/>
+                        <filter string="Technician" name="group_technician" context="{'group_by': 'assigned_technician_id'}"/>
+                        <filter string="Service Type" name="group_service_type" context="{'group_by': 'service_type_id'}"/>
+                        <filter string="State" name="group_state" context="{'group_by': 'state'}"/>
+                        <filter string="Priority" name="group_priority" context="{'group_by': 'priority'}"/>
+                        <filter string="Scheduled Date" name="group_scheduled_date" context="{'group_by': 'scheduled_date:day'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_service_order" model="ir.actions.act_window">
+            <field name="name">Service Orders</field>
+            <field name="res_model">inmoser.service.order</field>
+            <field name="view_mode">kanban,tree,form,calendar</field>
+            <field name="search_view_id" ref="view_service_order_search"></field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create your first service order!</p>
+                <p>Service orders help you track and manage customer equipment maintenance and repairs.</p>
+            </field>
+        </record>
+
+        <record id="action_service_order_calendar" model="ir.actions.act_window">
+            <field name="name">Service Orders Calendar</field>
+            <field name="res_model">inmoser.service.order</field>
+            <field name="view_mode">calendar,kanban,tree,form</field>
+            <field name="view_id" ref="view_service_order_calendar"></field>
+            <field name="search_view_id" ref="view_service_order_search"></field>
+            <field name="context">{'search_default_assigned': 1}</field>
+        </record>
+
+        <record id="view_service_order_qr_form" model="ir.ui.view">
+            <field name="name">inmoser.service.order.qr.form</field>
+            <field name="model">inmoser.service.order</field>
+            <field name="arch" type="xml">
+                <form title="Service Order QR" js_class="service_order_qr_form">
+                    <sheet>
+                        <div class="text-center">
+                            <h3>Service Order QR Code</h3>
+                            <p>Scan this code to access the service order</p>
+                            <div class="qr-code-container">
+                                <img t-att-src="'/inmoser/service/%s/qr' % id" class="img-fluid" alt="QR Code"/>
+                            </div>
+                            <p class="text-muted">
+                                Or access directly:
+                                <a t-att-href="'/my/service/%s' % id" target="_blank">
+                                    <t t-out="'/my/service/%s' % id"/>
+                                </a>
+                            </p>
+                        </div>
+                    </sheet>
+                    <footer>
+                        <button string="Print" type="button" class="btn-primary" id="print_qr"/>
+                        <button string="Close" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

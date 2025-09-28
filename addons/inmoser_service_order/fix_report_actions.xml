@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<odoo>
+  <data>
+    <menuitem id="menu_action_report_service_order" name="action_report_service_order" parent="menu_inmoser_reports" action="action_report_service_order"/>
+    <menuitem id="menu_action_report_service_certificate" name="action_report_service_certificate" parent="menu_inmoser_reports" action="action_report_service_certificate"/>
+    <menuitem id="menu_action_report_technician_performance" name="action_report_technician_performance" parent="menu_inmoser_reports" action="action_report_technician_performance"/>
+    <menuitem id="menu_action_report_equipment_history" name="action_report_equipment_history" parent="menu_inmoser_reports" action="action_report_equipment_history"/>
+  </data>
+</odoo>

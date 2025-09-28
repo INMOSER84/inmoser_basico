@@ -1,0 +1,247 @@
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Thu Sep 25 04:00:34 CST 2025
+Resultados: ✅48 ⚠️0
+0 ❌1
+Errores encontrados:
+[0;31m[ERROR][0m Error XML en: reports/service_order_template.xml
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Thu Sep 25 04:05:52 CST 2025
+Resultados: ✅49 ⚠️0
+0 ❌0
+0
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Thu Sep 25 04:10:17 CST 2025
+Resultados: ✅49 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Thu Sep 25 04:13:26 CST 2025
+Resultados: ✅49 ⚠️00 ❌00
+
+❌ Error en inmoser_service_order. Abortando cascada.
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Thu Sep 25 04:30:50 CST 2025
+Resultados: ✅52 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Thu Sep 25 04:34:31 CST 2025
+Resultados: ✅52 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Thu Sep 25 04:36:36 CST 2025
+Resultados: ✅52 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Thu Sep 25 04:55:32 CST 2025
+Resultados: ✅52 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Thu Sep 25 04:57:43 CST 2025
+Resultados: ✅52 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Thu Sep 25 04:58:14 CST 2025
+Resultados: ✅52 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Thu Sep 25 05:11:58 CST 2025
+Resultados: ✅52 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Thu Sep 25 05:14:34 CST 2025
+Resultados: ✅52 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Thu Sep 25 05:18:02 CST 2025
+Resultados: ✅52 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Thu Sep 25 05:22:31 CST 2025
+Resultados: ✅52 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Thu Sep 25 05:46:03 CST 2025
+Resultados: ✅52 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Thu Sep 25 07:32:21 CST 2025
+Resultados: ✅52 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Thu Sep 25 07:37:24 CST 2025
+Resultados: ✅52 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Thu Sep 25 07:43:01 CST 2025
+Resultados: ✅52 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Thu Sep 25 07:50:11 CST 2025
+Resultados: ✅52 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Thu Sep 25 07:55:51 CST 2025
+Resultados: ✅52 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Thu Sep 25 19:45:52 CST 2025
+Resultados: ✅52 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Thu Sep 25 21:58:08 CST 2025
+Resultados: ✅52 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Thu Sep 25 22:32:44 CST 2025
+Resultados: ✅52 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Thu Sep 25 23:23:36 CST 2025
+Resultados: ✅53 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Fri Sep 26 00:07:46 CST 2025
+Resultados: ✅53 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Fri Sep 26 01:02:26 CST 2025
+Resultados: ✅52 ⚠️00 ❌1
+Errores encontrados:
+[0;31m[ERROR][0m Error XML en: views/res_partner_views.xml
+
+❌ Falló despliegue – 20250926_010212
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Fri Sep 26 01:49:17 CST 2025
+Resultados: ✅53 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Fri Sep 26 02:32:43 CST 2025
+Resultados: ✅53 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Fri Sep 26 03:04:57 CST 2025
+Resultados: ✅53 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Fri Sep 26 03:57:01 CST 2025
+Resultados: ✅52 ⚠️00 ❌1
+Errores encontrados:
+[0;31m[ERROR][0m Error XML en: views/hr_employee_views.xml
+
+❌ Falló despliegue – 20250926_035655
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Fri Sep 26 03:58:55 CST 2025
+Resultados: ✅53 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Fri Sep 26 04:21:25 CST 2025
+Resultados: ✅53 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Fri Sep 26 04:39:43 CST 2025
+Resultados: ✅53 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Fri Sep 26 05:37:48 CST 2025
+Resultados: ✅53 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Fri Sep 26 06:09:49 CST 2025
+Resultados: ✅53 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Fri Sep 26 08:05:40 CST 2025
+Resultados: ✅53 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Fri Sep 26 19:15:48 CST 2025
+Resultados: ✅53 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Fri Sep 26 19:39:27 CST 2025
+Resultados: ✅53 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Fri Sep 26 20:35:30 CST 2025
+Resultados: ✅53 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Fri Sep 26 21:11:33 CST 2025
+Resultados: ✅53 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Fri Sep 26 23:03:29 CST 2025
+Resultados: ✅53 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Sat Sep 27 12:13:40 CST 2025
+Resultados: ✅53 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Sat Sep 27 13:42:15 CST 2025
+Resultados: ✅53 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Sat Sep 27 14:18:34 CST 2025
+Resultados: ✅52 ⚠️00 ❌1
+Errores encontrados:
+[0;31m[ERROR][0m Error de sintaxis en: models/service_equipment.py
+
+❌ Falló despliegue – 20250927_141829
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Sat Sep 27 14:26:24 CST 2025
+Resultados: ✅53 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Sat Sep 27 14:57:52 CST 2025
+Resultados: ✅54 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Sat Sep 27 16:04:24 CST 2025
+Resultados: ✅54 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Sat Sep 27 16:22:13 CST 2025
+Resultados: ✅54 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Sat Sep 27 16:46:36 CST 2025
+Resultados: ✅54 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Sat Sep 27 21:02:42 CST 2025
+Resultados: ✅54 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Sat Sep 27 21:07:44 CST 2025
+Resultados: ✅54 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Sat Sep 27 21:10:45 CST 2025
+Resultados: ✅54 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Sat Sep 27 21:13:39 CST 2025
+Resultados: ✅54 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Sat Sep 27 21:17:07 CST 2025
+Resultados: ✅54 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Sat Sep 27 21:20:35 CST 2025
+Resultados: ✅54 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Sat Sep 27 22:32:42 CST 2025
+Resultados: ✅54 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Sat Sep 27 23:01:07 CST 2025
+Resultados: ✅54 ⚠️00 ❌00
+
+=====================================================
+📌 Simulación de instalación inmoser_service_order – Sat Sep 27 23:34:22 CST 2025
+Resultados: ✅54 ⚠️00 ❌00
+

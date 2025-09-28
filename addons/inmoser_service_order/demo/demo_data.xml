@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="1">
+    <!-- ========================================================== -->
+    <!-- 1. CLIENTES DE DEMOSTRACIÓN (Residencial / Comercial)     -->
+    <!-- ========================================================== -->
+    <record id="demo_customer_1" model="res.partner">
+      <field name="name">Residencial Los Pinos</field>
+      <field name="is_company">False</field>
+      <field name="phone">+52 55 1234 5678</field>
+      <field name="mobile">+52 55 9876 5432</field>
+      <field name="email">j.garcia@lospinos.mx</field>
+      <field name="street">Calle Pinos 234, Casa 12</field>
+      <field name="city">Tlalnepantla</field>
+      <field name="zip">54060</field>
+      <field name="x_inmoser_customer_code">CLI00001</field>
+    </record>
+    <record id="demo_customer_2" model="res.partner">
+      <field name="name">Hotel Plaza Ejecutiva</field>
+      <field name="is_company">True</field>
+      <field name="phone">+52 33 2468 1357</field>
+      <field name="email">mantenimiento@hotelejecutiva.com</field>
+      <field name="street">Av. Javier Barros Sierra 456</field>
+      <field name="city">Zapopan</field>
+      <field name="zip">45110</field>
+      <field name="x_inmoser_customer_code">CLI00002</field>
+    </record>
+    <record id="demo_customer_3" model="res.partner">
+      <field name="name">Restaurante El Sabor</field>
+      <field name="is_company">True</field>
+      <field name="phone">+52 81 3691 2580</field>
+      <field name="email">admin@elsabor.com</field>
+      <field name="street">Blvd. Bernardo Quintana 789</field>
+      <field name="city">Santiago de Querétaro</field>
+      <field name="zip">76140</field>
+      <field name="x_inmoser_customer_code">CLI00003</field>
+    </record>
+    <!-- ========================================================== -->
+    <!-- 2. TÉCNICOS ESPECIALIZADOS (HVAC / Línea Blanca)           -->
+    <!-- ========================================================== -->
+    <record id="demo_technician_user_1" model="res.users">
+      <field name="name">Luis Hernández</field>
+      <field name="login">luis.hernandez</field>
+      <field name="email">luis.hernandez@inmoser.com</field>
+      <field name="groups_id" eval="[(6, 0, [ref('inmoser_service_order.group_inmoser_technician')])]"></field>
+    </record>
+    <record id="demo_technician_1" model="hr.employee">
+      <field name="name">Luis Hernández</field>
+      <field name="user_id" ref="demo_technician_user_1"></field>
+      <field name="x_inmoser_is_technician">True</field>
+      <field name="x_inmoser_employee_code">TECH001</field>
+      <field name="x_inmoser_specialization">hvac</field>
+      <field name="phone">+52 55 1111 2222</field>
+      <field name="work_email">luis.hernandez@inmoser.com</field>
+    </record>
+    <record id="demo_technician_user_2" model="res.users">
+      <field name="name">Marta Domínguez</field>
+      <field name="login">marta.dominguez</field>
+      <field name="email">marta.dominguez@inmoser.com</field>
+      <field name="groups_id" eval="[(6, 0, [ref('inmoser_service_order.group_inmoser_technician')])]"></field>
+    </record>
+    <record id="demo_technician_2" model="hr.employee">
+      <field name="name">Marta Domínguez</field>
+      <field name="user_id" ref="demo_technician_user_2"></field>
+      <field name="x_inmoser_is_technician">True</field>
+      <field name="x_inmoser_employee_code">TECH002</field>
+      <field name="x_inmoser_specialization">white_goods</field>
+      <field name="phone">+52 33 3333 4444</field>
+      <field name="work_email">marta.dominguez@inmoser.com</field>
+    </record>
+    <!-- ========================================================== -->
+    <!-- 3. EQUIPOS HVAC Y LÍNEA BLANCA                            -->
+    <!-- ========================================================== -->
+    <record id="demo_equipment_1" model="inmoser.service.equipment">
+      <field name="name">Minisplit 18 000 BTU Sala</field>
+      <field name="partner_id" ref="demo_customer_1"></field>
+      <field name="equipment_type">hvac_split</field>
+      <field name="brand">Midea</field>
+      <field name="model">Mission 18K</field>
+      <field name="serial_number">MSD-18-001234</field>
+      <field name="location">Sala de estar - Piso 1</field>
+      <field name="installation_date">2022-06-10</field>
+      <field name="warranty_expiry_date">2025-06-10</field>
+    </record>
+    <record id="demo_equipment_2" model="inmoser.service.equipment">
+      <field name="name">Refrigeradora Side-by-Side</field>
+      <field name="partner_id" ref="demo_customer_1"></field>
+      <field name="equipment_type">refrigerator</field>
+      <field name="brand">Whirlpool</field>
+      <field name="model">WSF26D4EXY</field>
+      <field name="serial_number">WSF-ABC-5678</field>
+      <field name="location">Cocina - Planta baja</field>
+      <field name="installation_date">2021-08-15</field>
+      <field name="warranty_expiry_date">2024-08-15</field>
+    </record>
+    <record id="demo_equipment_3" model="inmoser.service.equipment">
+      <field name="name">Cámara Frigorífica 3 Puertas</field>
+      <field name="partner_id" ref="demo_customer_2"></field>
+      <field name="equipment_type">commercial_cold</field>
+      <field name="brand">Hoshizaki</field>
+      <field name="model">HRG-3P-1800</field>
+      <field name="serial_number">HRG-HOTEL-001</field>
+      <field name="location">Cocina central - Hotel</field>
+      <field name="installation_date">2023-01-20</field>
+      <field name="warranty_expiry_date">2026-01-20</field>
+    </record>
+    <record id="demo_equipment_4" model="inmoser.service.equipment">
+      <field name="name">Lavadora Industrial 25 kg</field>
+      <field name="partner_id" ref="demo_customer_3"></field>
+      <field name="equipment_type">washer</field>
+      <field name="brand">Maytag</field>
+      <field name="model">MFR25PD</field>
+      <field name="serial_number">MAY-REST-002</field>
+      <field name="location">Área de lavandería - Restaurante</field>
+      <field name="installation_date">2022-11-05</field>
+      <field name="warranty_expiry_date">2025-11-05</field>
+    </record>
+    <!-- ========================================================== -->
+    <!-- 4. PRODUCTOS DE REPUESTO (HVAC / Línea Blanca)             -->
+    <!-- ========================================================== -->
+    <record id="demo_product_1" model="product.product">
+      <field name="name">Filtro de Aire Minisplit 18K</field>
+      <field name="type">product</field>
+      <field name="list_price">120.00</field>
+      <field name="standard_price">85.00</field>
+      <field name="is_service_part">True</field>
+      <field name="service_category">hvac</field>
+      <field name="min_stock_service">10</field>
+    </record>
+    <record id="demo_product_2" model="product.product">
+      <field name="name">Motor de Evaporador 18 000 BTU</field>
+      <field name="type">product</field>
+      <field name="list_price">850.00</field>
+      <field name="standard_price">650.00</field>
+      <field name="is_service_part">True</field>
+      <field name="service_category">hvac</field>
+      <field name="min_stock_service">3</field>
+    </record>
+    <record id="demo_product_3" model="product.product">
+      <field name="name">Válvula de Expansión TXV</field>
+      <field name="type">product</field>
+      <field name="list_price">250.00</field>
+      <field name="standard_price">180.00</field>
+      <field name="is_service_part">True</field>
+      <field name="service_category">hvac</field>
+      <field name="min_stock_service">5</field>
+    </record>
+    <record id="demo_product_4" model="product.product">
+      <field name="name">Tóner Nevera Side-by-Side</field>
+      <field name="type">product</field>
+      <field name="list_price">45.00</field>
+      <field name="standard_price">30.00</field>
+      <field name="is_service_part">True</field>
+      <field name="service_category">refrigeration</field>
+      <field name="min_stock_service">15</field>
+    </record>
+    <!-- ========================================================== -->
+    <!-- 5. ÓRDENES DE SERVICIO REALES (fallas típicas)             -->
+    <!-- ========================================================== -->
+    <record id="demo_service_order_1" model="inmoser.service.order">
+      <field name="partner_id" ref="demo_customer_1"></field>
+      <field name="equipment_id" ref="demo_equipment_1"></field>
+      <field name="service_type_id" ref="service_type_repair"></field>
+      <field name="reported_fault">El minisplit no enfría, solo ventila y hace ruido raro en el compresor.</field>
+      <field name="priority">high</field>
+      <field name="assigned_technician_id" ref="demo_technician_1"></field>
+      <field name="scheduled_date">2024-06-10 09:00:00</field>
+      <field name="state">done</field>
+      <field name="start_date">2024-06-10 09:15:00</field>
+      <field name="end_date">2024-06-10 11:30:00</field>
+      <field name="diagnosis">Fuga de gas R-410A en unión de cobre. Compresor sobrecalentado.</field>
+      <field name="work_performed">Recarga de gas R-410A, revisión de uniones y limpieza de serpentín.</field>
+      <field name="customer_satisfaction">5</field>
+    </record>
+    <record id="demo_service_order_2" model="inmoser.service.order">
+      <field name="partner_id" ref="demo_customer_1"></field>
+      <field name="equipment_id" ref="demo_equipment_2"></field>
+      <field name="service_type_id" ref="service_type_maintenance"></field>
+      <field name="reported_fault">Nevera hace hielo en el evaporador y no enfía bien el refri.</field>
+      <field name="priority">normal</field>
+      <field name="assigned_technician_id" ref="demo_technician_2"></field>
+      <field name="scheduled_date">2024-06-11 14:00:00</field>
+      <field name="state">done</field>
+      <field name="start_date">2024-06-11 14:10:00</field>
+      <field name="end_date">2024-06-11 15:45:00</field>
+      <field name="diagnosis">Sensor de deshielo defectuoso. Acumulación de hielo en serpentín.</field>
+      <field name="work_performed">Cambio de sensor de deshielo, limpieza de drenaje y calibración.</field>
+      <field name="customer_satisfaction">4</field>
+    </record>
+    <record id="demo_service_order_3" model="inmoser.service.order">
+      <field name="partner_id" ref="demo_customer_2"></field>
+      <field name="equipment_id" ref="demo_equipment_3"></field>
+      <field name="service_type_id" ref="service_type_installation"></field>
+      <field name="reported_fault">Instalar nuevo termostato digital y conectar a red Wi-Fi.</field>
+      <field name="priority">normal</field>
+      <field name="assigned_technician_id" ref="demo_technician_1"></field>
+      <field name="scheduled_date">2024-06-12 10:00:00</field>
+      <field name="state">in_progress</field>
+      <field name="start_date">2024-06-12 10:05:00</field>
+      <field name="diagnosis">Se requiere cableado adicional para alimentar termostato inteligente.</field>
+    </record>
+    <record id="demo_service_order_4" model="inmoser.service.order">
+      <field name="partner_id" ref="demo_customer_3"></field>
+      <field name="equipment_id" ref="demo_equipment_4"></field>
+      <field name="service_type_id" ref="service_type_repair"></field>
+      <field name="reported_fault">Lavadora no centrifuga y muestra código E3.</field>
+      <field name="priority">urgent</field>
+      <field name="assigned_technician_id" ref="demo_technician_2"></field>
+      <field name="scheduled_date">2024-06-13 08:00:00</field>
+      <field name="state">assigned</field>
+    </record>
+    <!-- ========================================================== -->
+    <!-- 6. LÍNEAS DE REFACCIÓN                                     -->
+    <!-- ========================================================== -->
+    <record id="demo_refaction_line_1" model="inmoser.service.order.refaction.line">
+      <field name="service_order_id" ref="demo_service_order_1"></field>
+      <field name="product_id" ref="demo_product_1"></field>
+      <field name="description">Filtro de aire nuevo para minisplit 18K</field>
+      <field name="quantity">1</field>
+      <field name="unit_price">120.00</field>
+    </record>
+    <record id="demo_refaction_line_2" model="inmoser.service.order.refaction.line">
+      <field name="service_order_id" ref="demo_service_order_2"></field>
+      <field name="product_id" ref="demo_product_4"></field>
+      <field name="description">Sensor de deshielo original Whirlpool</field>
+      <field name="quantity">1</field>
+      <field name="unit_price">45.00</field>
+    </record>
+    <!-- ========================================================== -->
+    <!-- 7. TIMESHEETS                                              -->
+    <!-- ========================================================== -->
+    <record id="demo_timesheet_1" model="inmoser.service.timesheet">
+      <field name="employee_id" ref="demo_technician_1"></field>
+      <field name="service_order_id" ref="demo_service_order_1"></field>
+      <field name="date">2024-06-10</field>
+      <field name="start_time">2024-06-10 09:15:00</field>
+      <field name="end_time">2024-06-10 11:30:00</field>
+      <field name="description">Recarga de gas y revisión de fugas en minisplit</field>
+      <field name="activity_type">repair</field>
+    </record>
+    <record id="demo_timesheet_2" model="inmoser.service.timesheet">
+      <field name="employee_id" ref="demo_technician_2"></field>
+      <field name="service_order_id" ref="demo_service_order_2"></field>
+      <field name="date">2024-06-11</field>
+      <field name="start_time">2024-06-11 14:10:00</field>
+      <field name="end_time">2024-06-11 15:45:00</field>
+      <field name="description">Cambio de sensor de deshielo y limpieza de nevera</field>
+      <field name="activity_type">maintenance</field>
+    </record>
+    <!-- ========================================================== -->
+    <!-- 8. INVENTARIO EN FURGONETA DE TÉCNICOS                     -->
+    <!-- ========================================================== -->
+    <record id="demo_inventory_1" model="inmoser.technician.inventory">
+      <field name="technician_id" ref="demo_technician_1"></field>
+      <field name="product_id" ref="demo_product_1"></field>
+      <field name="allocated_quantity">8</field>
+      <field name="available_quantity">7</field>
+      <field name="min_quantity">3</field>
+      <field name="last_replenishment">2024-06-01</field>
+    </record>
+    <record id="demo_inventory_2" model="inmoser.technician.inventory">
+      <field name="technician_id" ref="demo_technician_1"></field>
+      <field name="product_id" ref="demo_product_2"></field>
+      <field name="allocated_quantity">2</field>
+      <field name="available_quantity">2</field>
+      <field name="min_quantity">1</field>
+      <field name="last_replenishment">2024-06-01</field>
+    </record>
+    <record id="demo_inventory_3" model="inmoser.technician.inventory">
+      <field name="technician_id" ref="demo_technician_2"></field>
+      <field name="product_id" ref="demo_product_3"></field>
+      <field name="allocated_quantity">6</field>
+      <field name="available_quantity">5</field>
+      <field name="min_quantity">2</field>
+      <field name="last_replenishment">2024-05-28</field>
+    </record>
+    <record id="demo_inventory_4" model="inmoser.technician.inventory">
+      <field name="technician_id" ref="demo_technician_2"></field>
+      <field name="product_id" ref="demo_product_4"></field>
+      <field name="allocated_quantity">12</field>
+      <field name="available_quantity">11</field>
+      <field name="min_quantity">5</field>
+      <field name="last_replenishment">2024-05-30</field>
+    </record>
+    <!-- ========================================================== -->
+    <!-- 9. HORARIOS DE TÉCNICOS                                    -->
+    <!-- ========================================================== -->
+    <record id="demo_schedule_1_monday" model="inmoser.technician.schedule">
+      <field name="technician_id" ref="demo_technician_1"></field>
+      <field name="day_of_week">0</field>
+      <field name="start_time">8.0</field>
+      <field name="end_time">17.0</field>
+      <field name="max_services">5</field>
+    </record>
+    <record id="demo_schedule_1_tuesday" model="inmoser.technician.schedule">
+      <field name="technician_id" ref="demo_technician_1"></field>
+      <field name="day_of_week">1</field>
+      <field name="start_time">8.0</field>
+      <field name="end_time">17.0</field>
+      <field name="max_services">5</field>
+    </record>
+    <record id="demo_schedule_2_monday" model="inmoser.technician.schedule">
+      <field name="technician_id" ref="demo_technician_2"></field>
+      <field name="day_of_week">0</field>
+      <field name="start_time">9.0</field>
+      <field name="end_time">18.0</field>
+      <field name="max_services">4</field>
+    </record>
+    <record id="demo_schedule_2_wednesday" model="inmoser.technician.schedule">
+      <field name="technician_id" ref="demo_technician_2"></field>
+      <field name="day_of_week">2</field>
+      <field name="start_time">9.0</field>
+      <field name="end_time">18.0</field>
+      <field name="max_services">4</field>
+    </record>
+  </data>
+</odoo>

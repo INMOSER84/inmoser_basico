@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <templates>
+    <t t-name="inmoser_service_order.service_certificate_document">
+      <t t-call="web.html_container">
+        <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)"/>
+        <div class="page" style="font-family: Arial, sans-serif; padding: 20px;">
+          <div style="text-align: center; margin-bottom: 30px;">
+            <h1 style="color: #2E86AB;">CERTIFICADO DE SERVICIO</h1>
+            <p style="font-size: 14px; color: #666;">
+                        Este certificado acredita que el servicio ha sido realizado conforme a los estándares de calidad de Inmoser
+                    </p>
+          </div>
+          <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+            <tr>
+              <td style="padding: 10px; border: 1px solid #ddd;">
+                <strong>Número de Orden:</strong>
+              </td>
+              <td style="padding: 10px; border: 1px solid #ddd;">
+                <t t-out="doc.name"/>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; border: 1px solid #ddd;">
+                <strong>Cliente:</strong>
+              </td>
+              <td style="padding: 10px; border: 1px solid #ddd;">
+                <t t-out="doc.partner_id.name"/>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; border: 1px solid #ddd;">
+                <strong>Equipo:</strong>
+              </td>
+              <td style="padding: 10px; border: 1px solid #ddd;"><t t-out="doc.equipment_id.name"/> (<t t-out="doc.equipment_id.equipment_type"/>)
+                        </td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; border: 1px solid #ddd;">
+                <strong>Tipo de Servicio:</strong>
+              </td>
+              <td style="padding: 10px; border: 1px solid #ddd;">
+                <t t-out="doc.service_type_id.name"/>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; border: 1px solid #ddd;">
+                <strong>Técnico:</strong>
+              </td>
+              <td style="padding: 10px; border: 1px solid #ddd;">
+                <t t-out="doc.assigned_technician_id.name"/>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; border: 1px solid #ddd;">
+                <strong>Fecha de Servicio:</strong>
+              </td>
+              <td style="padding: 10px; border: 1px solid #ddd;">
+                <t t-out="doc.end_date" t-options="{'widget': 'date'}"/>
+              </td>
+            </tr>
+          </table>
+          <div style="margin-bottom: 20px;">
+            <h3>Diagnóstico</h3>
+            <p style="background: #f5f5f5; padding: 10px; border-radius: 5px;">
+              <t t-out="doc.diagnosis"/>
+            </p>
+          </div>
+          <div style="margin-bottom: 20px;">
+            <h3>Trabajo Realizado</h3>
+            <p style="background: #f5f5f5; padding: 10px; border-radius: 5px;">
+              <t t-out="doc.work_performed"/>
+            </p>
+          </div>
+          <div t-if="doc.refaction_line_ids" style="margin-bottom: 20px;">
+            <h3>Refacciones Utilizadas</h3>
+            <table style="width: 100%; border-collapse: collapse;">
+              <thead>
+                <tr style="background: #2E86AB; color: white;">
+                  <th style="padding: 8px;">Producto</th>
+                  <th style="padding: 8px;">Cantidad</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr t-foreach="doc.refaction_line_ids" t-as="line">
+                  <td style="padding: 8px; border: 1px solid #ddd;">
+                    <t t-out="line.product_id.name"/>
+                  </td>
+                  <td style="padding: 8px; border: 1px solid #ddd;">
+                    <t t-out="line.quantity"/>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="margin-top: 40px; text-align: center;">
+            <p>Firma del técnico: _________________________</p>
+            <p>Firma del cliente: _________________________</p>
+          </div>
+          <div style="text-align: center; margin-top: 40px; font-size: 12px; color: #666;">
+            <p>Certificado generado el <t t-out="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/></p>
+            <p>Inmoser México - www.inmosermexico.com</p>
+          </div>
+        </div>
+      </t>
+    </t>
+  </templates>
+</odoo>

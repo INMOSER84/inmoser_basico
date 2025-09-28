@@ -1,0 +1,91 @@
+[0;34m[INFO][0m 🔧 Simulando instalación de: /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order
+[0;34m[INFO][0m 📁 Módulo: inmoser_service_order
+[0;34m[INFO][0m 📍 Ruta: /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order
+[0;34m[INFO][0m Verificando dependencias del sistema
+[0;34m[INFO][0m Validando manifest: /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/__manifest__.py
+[SUCCESS] Manifest válido
+Nombre: Inmoser Service Order Management
+Versión: 17.0.1.0.0
+Dependencias: base, mail, portal, website, hr, account, stock, sale, purchase, project, crm
+[0;32m[SUCCESS][0m Manifest válido
+[0;34m[INFO][0m Verificando dependencias
+Dependencias encontradas:
+  - base
+  - mail
+  - portal
+  - website
+  - hr
+  - account
+  - stock
+  - sale
+  - purchase
+  - project
+  - crm
+[0;34m[INFO][0m Validando archivos XML
+[0;32m[SUCCESS][0m XML válido: data/service_type_data.xml
+[0;32m[SUCCESS][0m XML válido: data/ir_sequence_data.xml
+[0;32m[SUCCESS][0m XML válido: data/cron_jobs.xml
+[0;32m[SUCCESS][0m XML válido: data/email_templates.xml
+[0;32m[SUCCESS][0m XML válido: views/hr_employee_views.xml
+[0;32m[SUCCESS][0m XML válido: views/service_complete_wizard_views.xml
+[0;32m[SUCCESS][0m XML válido: views/service_order_views.xml
+[0;32m[SUCCESS][0m XML válido: views/res_partner_views.xml
+[0;32m[SUCCESS][0m XML válido: views/service_equipment_views.xml
+[0;32m[SUCCESS][0m XML válido: views/service_type_views.xml
+[0;32m[SUCCESS][0m XML válido: views/portal_templates.xml
+[0;32m[SUCCESS][0m XML válido: views/service_reprogram_wizard_views.xml
+[0;32m[SUCCESS][0m XML válido: views/menu_items.xml
+[0;32m[SUCCESS][0m XML válido: security/inmoser_security.xml
+[0;32m[SUCCESS][0m XML válido: reports/service_certificate_template.xml
+[0;32m[SUCCESS][0m XML válido: reports/technician_performance_template.xml
+[0;32m[SUCCESS][0m XML válido: reports/equipment_history_template.xml
+[0;32m[SUCCESS][0m XML válido: reports/service_order_template.xml
+[0;32m[SUCCESS][0m XML válido: reports/service_order_report.xml
+[0;32m[SUCCESS][0m XML válido: static/src/xml/calendar_templates.xml
+[0;32m[SUCCESS][0m XML válido: static/src/xml/service_order_qr.xml
+[0;32m[SUCCESS][0m XML válido: demo/demo_data.xml
+[0;34m[INFO][0m Validando archivos Python
+[0;32m[SUCCESS][0m Python válido: __manifest__.py
+[0;32m[SUCCESS][0m Python válido: __init__.py
+[0;32m[SUCCESS][0m Python válido: models/res_partner_extension.py
+[0;32m[SUCCESS][0m Python válido: models/stock_integration.py
+[0;32m[SUCCESS][0m Python válido: models/service_order_business_logic.py
+[0;32m[SUCCESS][0m Python válido: models/hr_employee_extension.py
+[0;32m[SUCCESS][0m Python válido: models/__init__.py
+[0;32m[SUCCESS][0m Python válido: models/qr_code_generator.py
+[0;32m[SUCCESS][0m Python válido: models/service_order.py
+[0;32m[SUCCESS][0m Python válido: models/service_order_refaction_line.py
+[0;32m[SUCCESS][0m Python válido: models/hr_integration.py
+[0;32m[SUCCESS][0m Python válido: models/service_equipment.py
+[0;32m[SUCCESS][0m Python válido: models/account_integration.py
+[0;32m[SUCCESS][0m Python válido: models/service_reprogram_wizard.py
+[0;32m[SUCCESS][0m Python válido: models/service_type.py
+[0;32m[SUCCESS][0m Python válido: tests/__init__.py
+[0;32m[SUCCESS][0m Python válido: tests/test_business_rules.py
+[0;32m[SUCCESS][0m Python válido: tests/test_service_order.py
+[0;32m[SUCCESS][0m Python válido: wizards/__init__.py
+[0;32m[SUCCESS][0m Python válido: wizards/service_complete_wizard.py
+[0;32m[SUCCESS][0m Python válido: wizards/service_reprogram_wizard.py
+[0;32m[SUCCESS][0m Python válido: controllers/main.py
+[0;32m[SUCCESS][0m Python válido: controllers/client_portal.py
+[0;32m[SUCCESS][0m Python válido: controllers/__init__.py
+[0;32m[SUCCESS][0m Python válido: reports/inmoser_service_order/models/__init__.py
+[0;34m[INFO][0m Verificando estructura de directorios
+[0;32m[SUCCESS][0m Directorio encontrado: models
+[0;32m[SUCCESS][0m Directorio encontrado: views
+[0;32m[SUCCESS][0m Directorio encontrado: security
+[0;34m[INFO][0m Directorio opcional encontrado: data
+[0;34m[INFO][0m Directorio opcional encontrado: demo
+[0;34m[INFO][0m Directorio opcional encontrado: static
+[0;34m[INFO][0m Verificando archivos de seguridad
+[0;34m[INFO][0m Archivo CSV de seguridad: security/ir.model.access.csv
+[0;32m[SUCCESS][0m XML de seguridad válido: security/inmoser_security.xml
+[0;34m[INFO][0m Generando resumen de la simulación
+=====================================================
+📊 RESUMEN DE LA SIMULACIÓN
+=====================================================
+✅ Completados: 53
+⚠️  Advertencias: 00
+❌ Errores: 00
+📋 Log completo: /home/baruc/odoo-inmoser_clean/logs/simulacion_instalacion_20250926_030453.log
+[0;32m[SUCCESS][0m 🎉 Simulación completada sin errores críticos

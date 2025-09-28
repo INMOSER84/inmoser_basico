@@ -1,0 +1,6 @@
+[0;34m[INFO][0m 🔧 Simulando instalación de: /
+[0;34m[INFO][0m 📁 Módulo: /
+[0;34m[INFO][0m 📍 Ruta: /
+[0;34m[INFO][0m Verificando dependencias del sistema
+[0;34m[INFO][0m Validando manifest: //__manifest__.py
+[0;31m[ERROR][0m No se encontró __manifest__.py

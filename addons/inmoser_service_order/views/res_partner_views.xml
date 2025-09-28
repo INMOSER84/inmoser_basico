@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<odoo>
+  <data>
+    <!-- ✅ Vista formulario heredada – Odoo 17 CE compatible -->
+    <record id="view_partner_form_inherit_inmoser" model="ir.ui.view">
+      <field name="name">res.partner.form.inherit.inmoser</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form"></field>
+      <field name="arch" type="xml">
+        <!-- Botones estadísticos -->
+        <xpath expr="//div[@name='button_box']" position="inside">
+          <button name="action_view_equipment" type="object" class="oe_stat_button" icon="fa-desktop" invisible="not x_inmoser_is_service_client">
+            <field name="x_inmoser_equipment_count" widget="statbutton" string="Equipment"></field>
+          </button>
+          <button name="action_view_service_orders" type="object" class="oe_stat_button" icon="fa-wrench" invisible="not x_inmoser_is_service_client">
+            <field name="x_inmoser_service_order_count" widget="statbutton" string="Service Orders"></field>
+          </button>
+          <button name="action_create_service_order" type="object" class="oe_stat_button" icon="fa-plus" invisible="not x_inmoser_is_service_client">
+            <div class="o_stat_info">
+              <span class="o_stat_text">New Service</span>
+            </div>
+          </button>
+        </xpath>
+        <!-- Campo teléfono alternativo -->
+        <xpath expr="//field[@name='mobile']" position="after">
+          <field name="x_inmoser_phone_mobile_2" invisible="not x_inmoser_is_service_client"></field>
+        </xpath>
+        <!-- Checkbox y secuencia -->
+        <xpath expr="//field[@name='category_id']" position="after">
+          <field name="x_inmoser_is_service_client"></field>
+          <field name="x_inmoser_client_sequence" readonly="1" invisible="not x_inmoser_client_sequence"></field>
+        </xpath>
+        <!-- Pestaña de información de servicio -->
+        <xpath expr="//notebook" position="inside">
+          <page string="Service Information" name="service_info" invisible="not x_inmoser_is_service_client">
+            <group string="Service Client Information">
+              <field name="x_inmoser_client_notes" placeholder="Additional notes about this service client..."></field>
+            </group>
+            <group string="Equipment" name="equipment_section">
+              <field name="x_inmoser_equipment_ids" nolabel="1">
+                <tree string="Equipment">
+                  <field name="name" string="Name"></field>
+                  <field name="equipment_type" string="Type"></field>
+                  <field name="brand" string="Brand"></field>
+                  <field name="model" string="Model"></field>
+                  <field name="state" widget="badge"></field>
+                  <field name="service_order_count" string="Orders"></field>
+                  <field name="last_service_date" string="Last Service"></field>
+                </tree>
+              </field>
+            </group>
+            <group string="Recent Service Orders" name="service_orders_section">
+              <field name="x_inmoser_service_order_ids" nolabel="1">
+                <tree limit="5">
+                  <field name="name" string="Reference"></field>
+                  <field name="equipment_id" string="Equipment"></field>
+                  <field name="service_type_id" string="Type"></field>
+                  <field name="assigned_technician_id" string="Technician"></field>
+                  <field name="scheduled_date" string="Scheduled"></field>
+                  <field name="state" widget="badge"></field>
+                  <field name="total_amount" string="Total"></field>
+                </tree>
+              </field>
+            </group>
+          </page>
+        </xpath>
+      </field>
+    </record>
+    <!-- ✅ Vista lista heredada – Odoo 17 CE compatible -->
+    <record id="view_partner_tree_inherit_inmoser" model="ir.ui.view">
+      <field name="name">res.partner.tree.inherit.inmoser</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_tree"></field>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='display_name']" position="after">
+          <field name="x_inmoser_client_sequence" optional="hide" string="Client Code"></field>
+          <field name="x_inmoser_is_service_client" optional="hide" string="Is Service Client"></field>
+        </xpath>
+      </field>
+    </record>
+    <!-- ✅ Vista lista personalizada – Odoo 17 CE compatible -->
+    <record id="view_service_client_tree" model="ir.ui.view">
+      <field name="name">res.partner.service.client.tree</field>
+      <field name="model">res.partner</field>
+      <field name="arch" type="xml">
+        <tree decoration-info="x_inmoser_is_service_client">
+          <field name="x_inmoser_client_sequence" string="Client Code"></field>
+          <field name="name" string="Name"></field>
+          <field name="phone" string="Phone"></field>
+          <field name="mobile" string="Mobile"></field>
+          <field name="x_inmoser_phone_mobile_2" string="Alt. Phone"></field>
+          <field name="email" string="Email"></field>
+          <field name="x_inmoser_equipment_count" string="Equipment"></field>
+          <field name="x_inmoser_service_order_count" string="Services"></field>
+          <field name="x_inmoser_is_service_client" invisible="1"></field>
+        </tree>
+      </field>
+    </record>
+    <!-- ✅ Vista kanban – Odoo 17 CE compatible -->
+    <record id="view_service_client_kanban" model="ir.ui.view">
+      <field name="name">res.partner.service.client.kanban</field>
+      <field name="model">res.partner</field>
+      <field name="arch" type="xml">
+        <kanban class="o_kanban_mobile">
+          <field name="x_inmoser_client_sequence"></field>
+          <field name="name"></field>
+          <field name="phone"></field>
+          <field name="mobile"></field>
+          <field name="email"></field>
+          <field name="x_inmoser_equipment_count"></field>
+          <field name="x_inmoser_service_order_count"></field>
+          <templates>
+            <t t-name="kanban-box">
+              <div class="oe_kanban_card oe_kanban_global_click">
+                <div class="o_kanban_image">
+                  <img t-att-src="kanban_image('res.partner', 'avatar_128', record.id.raw_value)" alt="Avatar" class="o_kanban_image_inner"/>
+                </div>
+                <div class="oe_kanban_details">
+                  <strong class="o_kanban_record_title">
+                    <field name="name"></field>
+                  </strong>
+                  <div class="o_kanban_record_subtitle">
+                    <field name="x_inmoser_client_sequence"></field>
+                  </div>
+                  <div class="o_kanban_record_body">
+                    <t t-if="record.phone.raw_value">
+                      <i class="fa fa-phone" title="Tel&#xE9;fono"/>
+                      <field name="phone"></field>
+                    </t>
+                    <t t-if="record.mobile.raw_value">
+                      <br/>
+                      <i class="fa fa-mobile" title="M&#xF3;vil"/>
+                      <field name="mobile"></field>
+                    </t>
+                    <t t-if="record.email.raw_value">
+                      <br/>
+                      <i class="fa fa-envelope" title="Correo electr&#xF3;nico"/>
+                      <field name="email"></field>
+                    </t>
+                  </div>
+                </div>
+                <div class="oe_kanban_footer">
+                  <div class="oe_kanban_footer_left">
+                    <span t-if="record.x_inmoser_equipment_count.raw_value &gt; 0"><i class="fa fa-desktop" title="Equipos"/><field name="x_inmoser_equipment_count"></field> equipment
+                                        </span>
+                  </div>
+                  <div class="oe_kanban_footer_right">
+                    <span t-if="record.x_inmoser_service_order_count.raw_value &gt; 0"><i class="fa fa-wrench" title="Servicios"/><field name="x_inmoser_service_order_count"></field> services
+                                        </span>
+                  </div>
+                </div>
+              </div>
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>
+    <!-- ✅ Vista de búsqueda – Odoo 17 CE compatible -->
+    <record id="view_service_client_search" model="ir.ui.view">
+      <field name="name">res.partner.service.client.search</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_res_partner_filter"></field>
+      <field name="arch" type="xml">
+        <xpath expr="//filter[@name='supplier']" position="after">
+          <filter string="Service Clients" name="service_clients" domain="[('x_inmoser_is_service_client', '=', True)]"/>
+        </xpath>
+        <xpath expr="//field[@name='name']" position="after">
+          <field name="x_inmoser_client_sequence" string="Client Code"></field>
+        </xpath>
+      </field>
+    </record>
+    <!-- ✅ Acción de ventana – Odoo 17 CE compatible -->
+    <record id="action_service_clients" model="ir.actions.act_window">
+      <field name="name">Service Clients</field>
+      <field name="res_model">res.partner</field>
+      <field name="view_mode">kanban,tree,form</field>
+      <field name="domain">[('x_inmoser_is_service_client', '=', True)]</field>
+      <field name="context">{
+                'default_x_inmoser_is_service_client': True,
+                'search_default_service_clients': 1
+            }</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">Create your first service client!</p>
+        <p>Service clients are customers who use your equipment maintenance and repair services. They get automatic client codes and can have multiple equipment registered.</p>
+      </field>
+    </record>
+  </data>
+</odoo>

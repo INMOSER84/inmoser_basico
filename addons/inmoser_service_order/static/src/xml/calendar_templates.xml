@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+  <t t-name="inmoser_service_order.TechnicianServiceDialog">
+    <div class="container-fluid">
+      <div class="row mb-3">
+        <div class="col-6">
+          <strong>Order:</strong>
+          <t t-out="order.name"/>
+        </div>
+        <div class="col-6">
+          <strong>State:</strong>
+          <span class="badge" t-attf-class="badge-{{ order.state === 'done' ? 'success' : order.state === 'in_progress' ? 'primary' : 'secondary' }}">
+            <t t-out="order.state"/>
+          </span>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-12">
+          <strong>Customer:</strong>
+          <t t-out="order.partner_id[1]"/>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-12">
+          <strong>Equipment:</strong>
+          <t t-out="order.equipment_id[1]"/>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-12">
+          <strong>Scheduled Date:</strong>
+          <t t-out="order.scheduled_date"/>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-12">
+          <strong>Reported Fault:</strong>
+          <t t-out="order.reported_fault || '-'"/>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-12">
+          <strong>Diagnosis:</strong>
+          <t t-out="order.diagnosis || '-'"/>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-12">
+          <strong>Work Performed:</strong>
+          <t t-out="order.work_performed || '-'"/>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-12">
+          <strong>Total Amount:</strong>
+          <t t-out="order.total_amount"/>
+        </div>
+      </div>
+    </div>
+  </t>
+</templates>

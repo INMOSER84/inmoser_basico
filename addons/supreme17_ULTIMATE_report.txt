@@ -1,0 +1,13 @@
+Generando auditoría de /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order ...
+
+=== Templates de reportes ===
+/home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/reports/service_certificate_template.xml:3:<templates>
+/home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/reports/technician_performance_template.xml:4:<template id="technician_performance_document">
+/home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/reports/equipment_history_template.xml:4:<template id="equipment_history_document">
+/home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/reports/service_order_template.xml:6:        <template id="service_order_document">
+
+=== IDs duplicados en reportes ===
+
+=== Actions de report sin menú asociado ===
+
+=== QWeb templates duplicados ===

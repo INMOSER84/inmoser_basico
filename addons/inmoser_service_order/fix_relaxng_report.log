@@ -1,0 +1,111 @@
+Fecha: Fri Sep 26 21:50:04 CST 2025
+Analizando /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/hr_employee_views.xml ...
+warning: failed to load external entity "/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd"
+Schemas parser error : Failed to locate the main schema resource at '/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd'.
+WXS schema /usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd failed to compile
+❌ ERROR en /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/hr_employee_views.xml
+Analizando /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_complete_wizard_views.xml ...
+warning: failed to load external entity "/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd"
+Schemas parser error : Failed to locate the main schema resource at '/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd'.
+WXS schema /usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd failed to compile
+❌ ERROR en /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_complete_wizard_views.xml
+Analizando /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_order_views.xml ...
+warning: failed to load external entity "/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd"
+Schemas parser error : Failed to locate the main schema resource at '/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd'.
+WXS schema /usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd failed to compile
+❌ ERROR en /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_order_views.xml
+Analizando /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/res_partner_views.xml ...
+warning: failed to load external entity "/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd"
+Schemas parser error : Failed to locate the main schema resource at '/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd'.
+WXS schema /usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd failed to compile
+❌ ERROR en /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/res_partner_views.xml
+Analizando /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_equipment_views.xml ...
+warning: failed to load external entity "/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd"
+Schemas parser error : Failed to locate the main schema resource at '/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd'.
+WXS schema /usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd failed to compile
+/home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_equipment_views.xml:90: parser error : Opening and ending tag mismatch: record line 5 and field
+            </field>
+                    ^
+/home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_equipment_views.xml:91: parser error : Opening and ending tag mismatch: data line 2 and record
+        </record>
+                 ^
+/home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_equipment_views.xml:120: parser error : Opening and ending tag mismatch: record line 94 and field
+            </field>
+                    ^
+/home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_equipment_views.xml:121: parser error : Opening and ending tag mismatch: odoo line 1 and record
+        </record>
+                 ^
+/home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_equipment_views.xml:124: parser error : Extra content at the end of the document
+        <record id="view_service_equipment_kanban" model="ir.ui.view">
+        ^
+❌ ERROR en /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_equipment_views.xml
+Analizando /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_type_views.xml ...
+warning: failed to load external entity "/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd"
+Schemas parser error : Failed to locate the main schema resource at '/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd'.
+WXS schema /usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd failed to compile
+❌ ERROR en /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_type_views.xml
+Analizando /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/portal_templates.xml ...
+warning: failed to load external entity "/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd"
+Schemas parser error : Failed to locate the main schema resource at '/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd'.
+WXS schema /usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd failed to compile
+❌ ERROR en /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/portal_templates.xml
+Analizando /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_reprogram_wizard_views.xml ...
+warning: failed to load external entity "/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd"
+Schemas parser error : Failed to locate the main schema resource at '/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd'.
+WXS schema /usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd failed to compile
+❌ ERROR en /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/service_reprogram_wizard_views.xml
+Analizando /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/menu_items.xml ...
+warning: failed to load external entity "/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd"
+Schemas parser error : Failed to locate the main schema resource at '/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd'.
+WXS schema /usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd failed to compile
+❌ ERROR en /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/views/menu_items.xml
+Analizando /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/data/service_type_data.xml ...
+warning: failed to load external entity "/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd"
+Schemas parser error : Failed to locate the main schema resource at '/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd'.
+WXS schema /usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd failed to compile
+❌ ERROR en /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/data/service_type_data.xml
+Analizando /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/data/ir_sequence_data.xml ...
+warning: failed to load external entity "/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd"
+Schemas parser error : Failed to locate the main schema resource at '/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd'.
+WXS schema /usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd failed to compile
+❌ ERROR en /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/data/ir_sequence_data.xml
+Analizando /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/data/cron_jobs.xml ...
+warning: failed to load external entity "/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd"
+Schemas parser error : Failed to locate the main schema resource at '/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd'.
+WXS schema /usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd failed to compile
+❌ ERROR en /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/data/cron_jobs.xml
+Analizando /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/data/email_templates.xml ...
+warning: failed to load external entity "/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd"
+Schemas parser error : Failed to locate the main schema resource at '/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd'.
+WXS schema /usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd failed to compile
+❌ ERROR en /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/data/email_templates.xml
+Analizando /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/demo/demo_data.xml ...
+warning: failed to load external entity "/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd"
+Schemas parser error : Failed to locate the main schema resource at '/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd'.
+WXS schema /usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd failed to compile
+❌ ERROR en /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/demo/demo_data.xml
+Analizando /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/reports/service_certificate_template.xml ...
+warning: failed to load external entity "/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd"
+Schemas parser error : Failed to locate the main schema resource at '/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd'.
+WXS schema /usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd failed to compile
+❌ ERROR en /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/reports/service_certificate_template.xml
+Analizando /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/reports/technician_performance_template.xml ...
+warning: failed to load external entity "/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd"
+Schemas parser error : Failed to locate the main schema resource at '/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd'.
+WXS schema /usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd failed to compile
+❌ ERROR en /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/reports/technician_performance_template.xml
+Analizando /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/reports/equipment_history_template.xml ...
+warning: failed to load external entity "/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd"
+Schemas parser error : Failed to locate the main schema resource at '/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd'.
+WXS schema /usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd failed to compile
+❌ ERROR en /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/reports/equipment_history_template.xml
+Analizando /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/reports/service_order_template.xml ...
+warning: failed to load external entity "/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd"
+Schemas parser error : Failed to locate the main schema resource at '/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd'.
+WXS schema /usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd failed to compile
+❌ ERROR en /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/reports/service_order_template.xml
+Analizando /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/reports/service_order_report.xml ...
+warning: failed to load external entity "/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd"
+Schemas parser error : Failed to locate the main schema resource at '/usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd'.
+WXS schema /usr/share/odoo/17.0/server/odoo/addons/base/data/ir_ui_view.xsd failed to compile
+❌ ERROR en /home/baruc/odoo-inmoser_clean/addons/inmoser_service_order/reports/service_order_report.xml

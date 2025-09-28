@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <template id="technician_performance_document">
+      <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="doc">
+          <div class="page" style="font-family: Arial, sans-serif; padding: 20px;">
+            <div style="text-align: center; margin-bottom: 30px;">
+              <h1 style="color: #2E86AB;">RENDIMIENTO DEL TÉCNICO</h1>
+              <h2>
+                <t t-out="doc.name"/>
+              </h2>
+              <p>Período: <t t-out="data['form']['date_from']"/> al <t t-out="data['form']['date_to']"/></p>
+            </div>
+            <div style="margin-bottom: 20px;">
+              <h3>Resumen</h3>
+              <table style="width: 100%; border-collapse: collapse;">
+                <tr>
+                  <td style="padding: 10px; border: 1px solid #ddd;">
+                    <strong>Total Órdenes:</strong>
+                  </td>
+                  <td style="padding: 10px; border: 1px solid #ddd;">
+                    <t t-set="total_orders" t-value="len(doc.x_inmoser_assigned_orders.filtered(lambda o: o.scheduled_date &gt;= data['form']['date_from'] and o.scheduled_date &lt;= data['form']['date_to']))"/>
+                    <t t-out="total_orders"/>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px; border: 1px solid #ddd;">
+                    <strong>Completadas:</strong>
+                  </td>
+                  <td style="padding: 10px; border: 1px solid #ddd;">
+                    <t t-set="completed_orders" t-value="len(doc.x_inmoser_assigned_orders.filtered(lambda o: o.state == 'done' and o.scheduled_date &gt;= data['form']['date_from'] and o.scheduled_date &lt;= data['form']['date_to']))"/>
+                    <t t-out="completed_orders"/>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px; border: 1px solid #ddd;">
+                    <strong>En Proceso:</strong>
+                  </td>
+                  <td style="padding: 10px; border: 1px solid #ddd;">
+                    <t t-set="in_progress_orders" t-value="len(doc.x_inmoser_assigned_orders.filtered(lambda o: o.state in ['in_progress', 'pending_approval'] and o.scheduled_date &gt;= data['form']['date_from'] and o.scheduled_date &lt;= data['form']['date_to']))"/>
+                    <t t-out="in_progress_orders"/>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div style="margin-bottom: 20px;">
+              <h3>Detalle de Servicios</h3>
+              <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                  <tr style="background: #2E86AB; color: white;">
+                    <th style="padding: 8px;">Orden</th>
+                    <th style="padding: 8px;">Cliente</th>
+                    <th style="padding: 8px;">Equipo</th>
+                    <th style="padding: 8px;">Fecha</th>
+                    <th style="padding: 8px;">Estado</th>
+                    <th style="padding: 8px;">Monto</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr t-foreach="doc.x_inmoser_assigned_orders.filtered(lambda o: o.scheduled_date &gt;= data['form']['date_from'] and o.scheduled_date &lt;= data['form']['date_to'])" t-as="order">
+                    <td style="padding: 8px; border: 1px solid #ddd;">
+                      <t t-out="order.name"/>
+                    </td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">
+                      <t t-out="order.partner_id.name"/>
+                    </td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">
+                      <t t-out="order.equipment_id.name"/>
+                    </td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">
+                      <t t-out="order.scheduled_date" t-options="{'widget': 'date'}"/>
+                    </td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">
+                      <t t-out="order.get_state_label()"/>
+                    </td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">
+                      <t t-out="order.total_amount" t-options="{'widget': 'monetary', 'display_currency': order.currency_id}"/>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div style="text-align: center; margin-top: 40px; font-size: 12px; color: #666;">
+              <p>Reporte generado el <t t-out="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/></p>
+              <p>Inmoser México - www.inmosermexico.com</p>
+            </div>
+          </div>
+        </t>
+      </t>
+    </template>
+  </data>
+</odoo>
