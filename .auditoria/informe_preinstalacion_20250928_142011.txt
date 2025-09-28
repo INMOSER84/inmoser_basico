@@ -1,3 +1,0 @@
-[BEGIN] Auditoría inmoser_service_order @ 20250928_142011
-== Entorno ==
-Falta 'odoo' en PATH

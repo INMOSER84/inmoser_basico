@@ -1,4 +1,0 @@
-== Auditoría de Seguridad ==
-Modelo ACL no encontrado: service.equipment.all
-Modelo ACL no encontrado: service.order.all
-Grupo no definido: uom.group_uom
