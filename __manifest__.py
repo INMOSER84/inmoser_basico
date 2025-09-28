@@ -37,7 +37,7 @@
     'installable': True,
     'application': True,
     'auto_install': False,
-    'external_dependencies': {'python': []},
+    'external_dependencies': {'python': ['qrcode']},
     'development_status': 'Beta',
     'price': 0,
     'currency': 'EUR',
