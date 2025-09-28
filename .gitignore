@@ -1,0 +1,8 @@
+# Ignorar carpeta de datos Docker
+docker/db_data/
+
+# Ignorar caches y archivos temporales de Python
+__pycache__/
+*.pyc
+*.pyo
+*.log
