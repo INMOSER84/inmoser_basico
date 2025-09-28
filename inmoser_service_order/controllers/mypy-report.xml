@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuite errors="0" failures="1" name="mypy" skips="0" tests="1" time="1.567">
+  <testcase classname="mypy" file="mypy" line="1" name="mypy-py3_10-linux" time="1.567">
+    <failure message="mypy produced messages">/home/baruc/inmoser_basico/models/service_type.py:3: error: Cannot find implementation or library stub for module named "odoo"  [import-not-found]
+/home/baruc/inmoser_basico/models/service_type.py:4: error: Cannot find implementation or library stub for module named "odoo.exceptions"  [import-not-found]
+/home/baruc/inmoser_basico/models/service_order_refaction_line.py:3: error: Cannot find implementation or library stub for module named "odoo"  [import-not-found]
+/home/baruc/inmoser_basico/models/service_order_refaction_line.py:4: error: Cannot find implementation or library stub for module named "odoo.exceptions"  [import-not-found]
+/home/baruc/inmoser_basico/models/res_partner_extension.py:5: error: Cannot find implementation or library stub for module named "odoo"  [import-not-found]
+/home/baruc/inmoser_basico/models/res_partner_extension.py:6: error: Cannot find implementation or library stub for module named "odoo.exceptions"  [import-not-found]
+/home/baruc/inmoser_basico/models/hr_employee_extension.py:5: error: Cannot find implementation or library stub for module named "odoo"  [import-not-found]
+/home/baruc/inmoser_basico/models/hr_employee_extension.py:6: error: Cannot find implementation or library stub for module named "odoo.exceptions"  [import-not-found]
+/home/baruc/inmoser_basico/wizards/service_reprogram_wizard.py:5: error: Cannot find implementation or library stub for module named "odoo"  [import-not-found]
+/home/baruc/inmoser_basico/wizards/service_reprogram_wizard.py:6: error: Cannot find implementation or library stub for module named "odoo.exceptions"  [import-not-found]
+/home/baruc/inmoser_basico/wizards/service_complete_wizard.py:6: error: Cannot find implementation or library stub for module named "odoo"  [import-not-found]
+/home/baruc/inmoser_basico/wizards/service_complete_wizard.py:7: error: Cannot find implementation or library stub for module named "odoo.exceptions"  [import-not-found]
+/home/baruc/inmoser_basico/models/stock_integration.py:5: error: Cannot find implementation or library stub for module named "odoo"  [import-not-found]
+/home/baruc/inmoser_basico/models/stock_integration.py:6: error: Cannot find implementation or library stub for module named "odoo.exceptions"  [import-not-found]
+/home/baruc/inmoser_basico/models/service_order_business_logic.py:6: error: Cannot find implementation or library stub for module named "odoo"  [import-not-found]
+/home/baruc/inmoser_basico/models/service_order_business_logic.py:7: error: Cannot find implementation or library stub for module named "odoo.exceptions"  [import-not-found]
+/home/baruc/inmoser_basico/models/service_order.py:6: error: Cannot find implementation or library stub for module named "odoo"  [import-not-found]
+/home/baruc/inmoser_basico/models/service_order.py:7: error: Cannot find implementation or library stub for module named "odoo.exceptions"  [import-not-found]
+/home/baruc/inmoser_basico/models/qr_code_generator.py:7: error: Library stubs not installed for "qrcode"  [import-untyped]
+/home/baruc/inmoser_basico/models/qr_code_generator.py:7: note: Hint: "python3 -m pip install types-qrcode"
+/home/baruc/inmoser_basico/models/qr_code_generator.py:7: note: (or run "mypy --install-types" to install all missing stub packages)
+/home/baruc/inmoser_basico/models/qr_code_generator.py:8: error: Cannot find implementation or library stub for module named "odoo"  [import-not-found]
+/home/baruc/inmoser_basico/models/qr_code_generator.py:9: error: Cannot find implementation or library stub for module named "odoo.exceptions"  [import-not-found]
+/home/baruc/inmoser_basico/models/hr_integration.py:6: error: Cannot find implementation or library stub for module named "odoo"  [import-not-found]
+/home/baruc/inmoser_basico/models/hr_integration.py:7: error: Cannot find implementation or library stub for module named "odoo.exceptions"  [import-not-found]
+/home/baruc/inmoser_basico/models/account_integration.py:5: error: Cannot find implementation or library stub for module named "odoo"  [import-not-found]
+/home/baruc/inmoser_basico/models/account_integration.py:6: error: Cannot find implementation or library stub for module named "odoo.exceptions"  [import-not-found]
+client_portal.py:6: error: Cannot find implementation or library stub for module named "odoo"  [import-not-found]
+client_portal.py:7: error: Cannot find implementation or library stub for module named "odoo.addons.portal.controllers.portal"  [import-not-found]
+client_portal.py:7: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+client_portal.py:8: error: Cannot find implementation or library stub for module named "odoo.exceptions"  [import-not-found]
+client_portal.py:9: error: Cannot find implementation or library stub for module named "odoo.http"  [import-not-found]
+__init__.py:2: error: Module "inmoser_basico.controllers" has no attribute "public_portal"  [attr-defined]
+/home/baruc/inmoser_basico/models/service_equipment.py:6: error: Library stubs not installed for "qrcode"  [import-untyped]
+/home/baruc/inmoser_basico/models/service_equipment.py:7: error: Cannot find implementation or library stub for module named "odoo"  [import-not-found]
+/home/baruc/inmoser_basico/models/service_equipment.py:8: error: Cannot find implementation or library stub for module named "odoo.exceptions"  [import-not-found]</failure>
+  </testcase>
+</testsuite>
