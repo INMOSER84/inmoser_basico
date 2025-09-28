@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 class ServiceOrder(models.Model):
     _name = 'service.order'
     _description = 'Service Order'
-    _inherit = ['mail.thread', 'mail.activity.mixin', 'qr.code.generator']
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _order = 'date_requested desc'
     
     name = fields.Char(string='Order Reference', required=True, copy=False, readonly=True, default=lambda self: _('New'))
@@ -35,6 +35,7 @@ class ServiceOrder(models.Model):
     invoice_id = fields.Many2one('account.move', string='Invoice')
     is_invoiced = fields.Boolean(string='Invoiced', default=False)
     duration = fields.Float(string='Duration (hours)', compute='_compute_duration', store=True)
+    qr_code = fields.Binary(string='QR Code', compute='_generate_qr_code')
     
     @api.model
     def create(self, vals):
@@ -42,15 +43,41 @@ class ServiceOrder(models.Model):
             vals['name'] = self.env['ir.sequence'].next_by_code('service.order') or _('New')
         return super().create(vals)
     
-    def _get_qr_data(self, record):
-        return f"{record.name}|{record.partner_id.name}|{record.date_requested}"
-    
     @api.depends('date_started', 'date_completed')
     def _compute_duration(self):
         for order in self:
             if order.date_started and order.date_completed:
                 delta = order.date_completed - order.date_started
                 order.duration = delta.total_seconds() / 3600  # Convert to hours
+    
+    def _generate_qr_code(self):
+        for order in self:
+            try:
+                import qrcode
+                import io
+                import base64
+                
+                qr_data = f"{order.name}|{order.partner_id.name}|{order.date_requested}"
+                qr = qrcode.QRCode(
+                    version=1,
+                    error_correction=qrcode.constants.ERROR_CORRECT_L,
+                    box_size=10,
+                    border=4,
+                )
+                qr.add_data(qr_data)
+                qr.make(fit=True)
+                
+                img = qr.make_image(fill_color="black", back_color="white")
+                
+                # Convert to base64
+                buffer = io.BytesIO()
+                img.save(buffer, format="PNG")
+                img_str = base64.b64encode(buffer.getvalue())
+                
+                order.qr_code = img_str
+            except Exception as e:
+                # Si hay un error, no generamos el código QR
+                order.qr_code = False
     
     def action_schedule(self):
         for order in self:

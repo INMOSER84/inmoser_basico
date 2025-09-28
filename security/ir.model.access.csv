@@ -7,3 +7,9 @@ access_service_equipment_user,service.equipment.user,model_service_equipment,bas
 access_service_equipment_manager,service.equipment.manager,model_service_equipment,base.group_system,1,1,1,1
 access_service_order_refaction_line_user,service.order.refaction.line.user,model_service_order_refaction_line,base.group_user,1,1,1,0
 access_service_order_refaction_line_manager,service.order.refaction.line.manager,model_service_order_refaction_line,base.group_system,1,1,1,1
+access_service_complete_wizard_user,service.complete.wizard.user,model_service_complete_wizard,base.group_user,1,1,1,0
+access_service_complete_wizard_manager,service.complete.wizard.manager,model_service_complete_wizard,base.group_system,1,1,1,1
+access_service_complete_wizard_line_user,service.complete.wizard.line.user,model_service_complete_wizard_line,base.group_user,1,1,1,0
+access_service_complete_wizard_line_manager,service.complete.wizard.line.manager,model_service_complete_wizard_line,base.group_system,1,1,1,1
+access_service_reprogram_wizard_user,service.reprogram.wizard.user,model_service_reprogram_wizard,base.group_user,1,1,1,0
+access_service_reprogram_wizard_manager,service.reprogram.wizard.manager,model_service_reprogram_wizard,base.group_system,1,1,1,1

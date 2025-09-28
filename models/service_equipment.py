@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 class ServiceEquipment(models.Model):
     _name = 'service.equipment'
     _description = 'Service Equipment'
-    _inherit = ['mail.thread', 'mail.activity.mixin', 'qr.code.generator']
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _order = 'name'
     
     name = fields.Char(string='Equipment Name', required=True, tracking=True)
@@ -22,6 +22,7 @@ class ServiceEquipment(models.Model):
     last_service_date = fields.Datetime(string='Last Service Date')
     next_service_date = fields.Datetime(string='Next Service Date')
     service_interval = fields.Integer(string='Service Interval (days)', default=365)
+    qr_code = fields.Binary(string='QR Code', compute='_generate_qr_code')
     
     @api.model
     def create(self, vals):
@@ -34,8 +35,35 @@ class ServiceEquipment(models.Model):
         
         return equipment
     
-    def _get_qr_data(self, record):
-        return f"{record.name}|{record.serial_number}|{record.partner_id.name}"
+    @api.depends('name', 'serial_number', 'partner_id')
+    def _generate_qr_code(self):
+        for equipment in self:
+            try:
+                import qrcode
+                import io
+                import base64
+                
+                qr_data = f"{equipment.name}|{equipment.serial_number}|{equipment.partner_id.name}"
+                qr = qrcode.QRCode(
+                    version=1,
+                    error_correction=qrcode.constants.ERROR_CORRECT_L,
+                    box_size=10,
+                    border=4,
+                )
+                qr.add_data(qr_data)
+                qr.make(fit=True)
+                
+                img = qr.make_image(fill_color="black", back_color="white")
+                
+                # Convert to base64
+                buffer = io.BytesIO()
+                img.save(buffer, format="PNG")
+                img_str = base64.b64encode(buffer.getvalue())
+                
+                equipment.qr_code = img_str
+            except Exception as e:
+                # Si hay un error, no generamos el código QR
+                equipment.qr_code = False
     
     def action_schedule_service(self):
         self.ensure_one()
