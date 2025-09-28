@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Plantilla de reporte de orden de servicio detallada -->
+        <template id="report_service_order_template_document">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Service Order</h2>
+                        <div class="row mt32 mb32">
+                            <div class="col-6">
+                                <strong>Order Reference:</strong>
+                                <p t-field="doc.name"/>
+                                <strong>Customer:</strong>
+                                <p t-field="doc.partner_id.name"/>
+                                <strong>Service Type:</strong>
+                                <p t-field="doc.service_type_id.name"/>
+                            </div>
+                            <div class="col-6">
+                                <strong>Requested Date:</strong>
+                                <p t-field="doc.date_requested"/>
+                                <strong>Scheduled Date:</strong>
+                                <p t-field="doc.date_scheduled"/>
+                                <strong>Priority:</strong>
+                                <p t-field="doc.priority"/>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb32">
+                            <div class="col-6">
+                                <strong>Equipment:</strong>
+                                <p t-field="doc.equipment_id.name"/>
+                                <strong>Serial Number:</strong>
+                                <p t-field="doc.equipment_id.serial_number"/>
+                            </div>
+                            <div class="col-6">
+                                <strong>Technician:</strong>
+                                <p t-field="doc.technician_id.name"/>
+                                <strong>Status:</strong>
+                                <p t-field="doc.state"/>
+                            </div>
+                        </div>
+                        
+                        <h3>Description</h3>
+                        <p t-field="doc.description"/>
+                        
+                        <h3>Refaction Lines</h3>
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Unit Price</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="doc.refaction_line_ids" t-as="line">
+                                    <td><span t-field="line.product_id.name"/></td>
+                                    <td><span t-field="line.quantity"/></td>
+                                    <td><span t-field="line.unit_price"/></td>
+                                    <td><span t-field="line.subtotal"/></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="3" class="text-right"><strong>Total:</strong></td>
+                                    <td><span t-esc="sum(doc.refaction_line_ids.mapped('subtotal'))"/></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        
+                        <h3>Notes</h3>
+                        <p t-field="doc.notes"/>
+                    </div>
+                </t>
+            </t>
+        </template>
+        
+        <!-- Acción de reporte -->
+        <record id="action_report_service_order_template" model="ir.actions.report">
+            <field name="name">Service Order Detailed</field>
+            <field name="model">service.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">inmoser_service_order.report_service_order_template_document</field>
+            <field name="report_file">inmoser_service_order.report_service_order_template_document</field>
+            <field name="binding_model_id" ref="model_service_order"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

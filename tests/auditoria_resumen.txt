@@ -1,0 +1,6 @@
+=== RESUMEN DE AUDITORÍA ===
+Total archivos: 14
+Total directorios: 2
+Modelos: 0
+Vistas: 0
+Pruebas: 0

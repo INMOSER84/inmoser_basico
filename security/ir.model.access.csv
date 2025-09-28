@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_service_order_user,service.order.user,model_service_order,base.group_user,1,1,1,0
+access_service_order_manager,service.order.manager,model_service_order,base.group_system,1,1,1,1
+access_service_type_user,service.type.user,model_service_type,base.group_user,1,0,0,0
+access_service_type_manager,service.type.manager,model_service_type,base.group_system,1,1,1,1
+access_service_equipment_user,service.equipment.user,model_service_equipment,base.group_user,1,1,1,0
+access_service_equipment_manager,service.equipment.manager,model_service_equipment,base.group_system,1,1,1,1
+access_service_order_refaction_line_user,service.order.refaction.line.user,model_service_order_refaction_line,base.group_user,1,1,1,0
+access_service_order_refaction_line_manager,service.order.refaction.line.manager,model_service_order_refaction_line,base.group_system,1,1,1,1

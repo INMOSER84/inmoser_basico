@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Plantilla de reporte para historial de equipo -->
+        <template id="report_equipment_history_document">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Equipment History Report</h2>
+                        <div class="row mt32 mb32">
+                            <div class="col-6">
+                                <strong>Equipment:</strong>
+                                <p t-field="doc.name"/>
+                                <strong>Serial Number:</strong>
+                                <p t-field="doc.serial_number"/>
+                                <strong>Model:</strong>
+                                <p t-field="doc.model"/>
+                            </div>
+                            <div class="col-6">
+                                <strong>Owner:</strong>
+                                <p t-field="doc.partner_id.name"/>
+                                <strong>Location:</strong>
+                                <p t-field="doc.location"/>
+                                <strong>Report Date:</strong>
+                                <p t-esc="datetime.datetime.now().strftime('%Y-%m-%d')"/>
+                            </div>
+                        </div>
+                        
+                        <h3>Service History</h3>
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Order Reference</th>
+                                    <th>Date</th>
+                                    <th>Service Type</th>
+                                    <th>Technician</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="doc.service_order_ids" t-as="order">
+                                    <td><span t-field="order.name"/></td>
+                                    <td><span t-field="order.date_requested"/></td>
+                                    <td><span t-field="order.service_type_id.name"/></td>
+                                    <td><span t-field="order.technician_id.name"/></td>
+                                    <td><span t-field="order.state"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+        
+        <!-- Acción de reporte -->
+        <record id="action_report_equipment_history" model="ir.actions.report">
+            <field name="name">Equipment History</field>
+            <field name="model">service.equipment</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">inmoser_service_order.report_equipment_history_document</field>
+            <field name="report_file">inmoser_service_order.report_equipment_history_document</field>
+            <field name="binding_model_id" ref="model_service_equipment"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

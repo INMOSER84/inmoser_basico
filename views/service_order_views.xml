@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Vista de formulario -->
+        <record id="view_service_order_form" model="ir.ui.view">
+            <field name="name">service.order.form</field>
+            <field name="model">service.order</field>
+            <field name="arch" type="xml">
+                <form string="Service Order">
+                    <header>
+                        <button name="action_schedule" type="object" string="Schedule" class="btn-primary" invisible="state != 'draft'"/>
+                        <button name="action_start" type="object" string="Start Work" class="btn-primary" invisible="state != 'scheduled'"/>
+                        <button name="action_complete" type="object" string="Complete" class="btn-primary" invisible="state != 'in_progress'"/>
+                        <button name="action_cancel" type="object" string="Cancel" class="btn-secondary" invisible="state in ('completed', 'cancelled')"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,scheduled,in_progress,completed"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_create_invoice" type="object" class="oe_stat_button" icon="fa-pencil-square-o" invisible="is_invoiced">
+                                <field name="is_invoiced" widget="boolean_toggle"/>
+                            </button>
+                        </div>
+                        <field name="qr_code" widget="image" class="oe_avatar"/>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" placeholder="Order Reference..."/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="partner_id"/>
+                                <field name="service_type_id"/>
+                                <field name="equipment_id"/>
+                                <field name="technician_id"/>
+                            </group>
+                            <group>
+                                <field name="date_requested"/>
+                                <field name="date_scheduled"/>
+                                <field name="date_started"/>
+                                <field name="date_completed"/>
+                                <field name="priority"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Description">
+                                <field name="description"/>
+                            </page>
+                            <page string="Refaction Lines">
+                                <field name="refaction_line_ids">
+                                    <tree editable="bottom">
+                                        <field name="product_id"/>
+                                        <field name="quantity"/>
+                                        <field name="unit_price"/>
+                                        <field name="subtotal"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Notes">
+                                <field name="notes"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        
+        <!-- Vista de árbol -->
+        <record id="view_service_order_tree" model="ir.ui.view">
+            <field name="name">service.order.tree</field>
+            <field name="model">service.order</field>
+            <field name="arch" type="xml">
+                <tree string="Service Orders" decoration-info="state=='draft'" decoration-warning="state=='scheduled'" decoration-success="state=='completed'">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="service_type_id"/>
+                    <field name="date_requested"/>
+                    <field name="date_scheduled"/>
+                    <field name="technician_id"/>
+                    <field name="state"/>
+                    <field name="priority"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!-- Vista de búsqueda -->
+        <record id="view_service_order_search" model="ir.ui.view">
+            <field name="name">service.order.search</field>
+            <field name="model">service.order</field>
+            <field name="arch" type="xml">
+                <search string="Service Orders">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="service_type_id"/>
+                    <field name="technician_id"/>
+                    <separator/>
+                    <filter name="draft" string="Draft" domain="[('state','=','draft')]"/>
+                    <filter name="scheduled" string="Scheduled" domain="[('state','=','scheduled')]"/>
+                    <filter name="in_progress" string="In Progress" domain="[('state','=','in_progress')]"/>
+                    <filter name="completed" string="Completed" domain="[('state','=','completed')]"/>
+                    <separator/>
+                    <filter name="my_orders" string="My Orders" domain="[('technician_id.user_id', '=', uid)]"/>
+                    <separator/>
+                    <group expand="0" string="Group By">
+                        <filter name="group_state" string="Status" context="{'group_by':'state'}"/>
+                        <filter name="group_partner" string="Customer" context="{'group_by':'partner_id'}"/>
+                        <filter name="group_technician" string="Technician" context="{'group_by':'technician_id'}"/>
+                        <filter name="group_service_type" string="Service Type" context="{'group_by':'service_type_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        
+        <!-- Acción de ventana -->
+        <record id="action_service_order" model="ir.actions.act_window">
+            <field name="name">Service Orders</field>
+            <field name="res_model">service.order</field>
+            <field name="view_mode">tree,form,calendar,graph,pivot</field>
+            <field name="context">{'search_default_draft': 1, 'search_default_scheduled': 1, 'search_default_in_progress': 1}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No service orders found
+                </p>
+                <p>
+                    Create your first service order to manage your services.
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

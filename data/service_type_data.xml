@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Tipos de servicio básicos -->
+        <record id="service_type_maintenance" model="service.type">
+            <field name="name">Maintenance</field>
+            <field name="description">Regular maintenance service</field>
+            <field name="duration">2.0</field>
+            <field name="equipment_required">True</field>
+            <field name="technician_required">True</field>
+        </record>
+        
+        <record id="service_type_repair" model="service.type">
+            <field name="name">Repair</field>
+            <field name="description">Repair service for equipment</field>
+            <field name="duration">4.0</field>
+            <field name="equipment_required">True</field>
+            <field name="technician_required">True</field>
+        </record>
+        
+        <record id="service_type_installation" model="service.type">
+            <field name="name">Installation</field>
+            <field name="description">Installation of new equipment</field>
+            <field name="duration">6.0</field>
+            <field name="equipment_required">True</field>
+            <field name="technician_required">True</field>
+        </record>
+        
+        <record id="service_type_inspection" model="service.type">
+            <field name="name">Inspection</field>
+            <field name="description">Inspection service</field>
+            <field name="duration">1.0</field>
+            <field name="equipment_required">True</field>
+            <field name="technician_required">True</field>
+        </record>
+        
+        <record id="service_type_consulting" model="service.type">
+            <field name="name">Consulting</field>
+            <field name="description">Consulting service</field>
+            <field name="duration">2.0</field>
+            <field name="equipment_required">False</field>
+            <field name="technician_required">True</field>
+        </record>
+    </data>
+</odoo>

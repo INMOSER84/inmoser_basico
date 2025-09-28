@@ -1,0 +1,61 @@
+.o_portal_my_home {
+    .o_service_order_card {
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        margin-bottom: 15px;
+        
+        .card-header {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 10px 15px;
+            
+            .card-title {
+                margin: 0;
+                font-size: 16px;
+                font-weight: 500;
+            }
+        }
+        
+        .card-body {
+            padding: 15px;
+            
+            .o_service_order_info {
+                margin-bottom: 10px;
+                
+                .info-label {
+                    font-weight: 500;
+                    margin-right: 5px;
+                }
+            }
+            
+            .o_service_order_actions {
+                margin-top: 15px;
+                
+                .btn {
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+    
+    .o_service_order_table {
+        .table {
+            margin-bottom: 0;
+            
+            th {
+                background-color: #f8f9fa;
+                border-top: none;
+                font-weight: 500;
+            }
+            
+            td {
+                vertical-align: middle;
+            }
+            
+            .badge {
+                font-size: 12px;
+                padding: 4px 8px;
+            }
+        }
+    }
+}

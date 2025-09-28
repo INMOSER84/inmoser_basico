@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Vista de formulario -->
+        <record id="view_service_equipment_form" model="ir.ui.view">
+            <field name="name">service.equipment.form</field>
+            <field name="model">service.equipment</field>
+            <field name="arch" type="xml">
+                <form string="Service Equipment">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                                <field name="active" widget="boolean_toggle"/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" placeholder="Equipment Name..."/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="serial_number"/>
+                                <field name="model"/>
+                                <field name="manufacturer"/>
+                                <field name="partner_id"/>
+                            </group>
+                            <group>
+                                <field name="purchase_date"/>
+                                <field name="warranty_start"/>
+                                <field name="warranty_end"/>
+                                <field name="location"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Service History">
+                                <field name="service_order_ids">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="date_requested"/>
+                                        <field name="technician_id"/>
+                                        <field name="state"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Maintenance">
+                                <group>
+                                    <field name="last_service_date"/>
+                                    <field name="next_service_date"/>
+                                </group>
+                            </page>
+                            <page string="Notes">
+                                <field name="notes"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        
+        <!-- Vista de árbol -->
+        <record id="view_service_equipment_tree" model="ir.ui.view">
+            <field name="name">service.equipment.tree</field>
+            <field name="model">service.equipment</field>
+            <field name="arch" type="xml">
+                <tree string="Service Equipment">
+                    <field name="name"/>
+                    <field name="serial_number"/>
+                    <field name="partner_id"/>
+                    <field name="model"/>
+                    <field name="manufacturer"/>
+                    <field name="last_service_date"/>
+                    <field name="next_service_date"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!-- Vista de búsqueda -->
+        <record id="view_service_equipment_search" model="ir.ui.view">
+            <field name="name">service.equipment.search</field>
+            <field name="model">service.equipment</field>
+            <field name="arch" type="xml">
+                <search string="Service Equipment">
+                    <field name="name"/>
+                    <field name="serial_number"/>
+                    <field name="partner_id"/>
+                    <field name="model"/>
+                    <field name="manufacturer"/>
+                    <separator/>
+                    <filter name="active" string="Active" domain="[('active','=',True)]"/>
+                    <filter name="inactive" string="Inactive" domain="[('active','=',False)]"/>
+                    <separator/>
+                    <group expand="0" string="Group By">
+                        <filter name="group_partner" string="Owner" context="{'group_by':'partner_id'}"/>
+                        <filter name="group_manufacturer" string="Manufacturer" context="{'group_by':'manufacturer'}"/>
+                        <filter name="group_model" string="Model" context="{'group_by':'model'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        
+        <!-- Acción de ventana -->
+        <record id="action_service_equipment" model="ir.actions.act_window">
+            <field name="name">Service Equipment</field>
+            <field name="res_model">service.equipment</field>
+            <field name="view_mode">tree,form,graph,pivot</field>
+            <field name="context">{'search_default_active': 1}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No equipment found
+                </p>
+                <p>
+                    Create your first equipment to manage your services.
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,14 @@
+=== INFORME FINAL DE ESTADO ===
+Fecha: Sun Sep 28 14:12:47 CST 2025
+Módulo: inmoser_service_order
+
+Errores de estilo restantes: 18
+Líneas demasiado largas (E501): 7
+Variables no utilizadas (F841): 3
+
+Archivos con más errores:
+      3 ./models/service_order_business_logic.py
+      2 ./tests/test_service_workflows.py
+      2 ./tests/test_service_equipment.py
+      2 ./models/hr_employee_extension.py
+      1 ./wizards/service_reprogram_wizard.py

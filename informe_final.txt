@@ -1,0 +1,23 @@
+=== INFORME FINAL DE AUDITORÍA ===
+Fecha: Sun Sep 28 14:04:53 CST 2025
+Módulo: inmoser_service_order
+
+=== ESTADÍSTICAS BÁSICAS ===
+Total archivos: 101
+Total directorios: 24
+Modelos: 15
+Vistas: 11
+Pruebas: 10
+Reportes: 5
+Wizards: 5
+
+=== CALIDAD DE CÓDIGO ===
+Errores de estilo restantes: 97
+Archivos con más errores:
+- hr_employee_extension.py: 10
+- service_order.py: 7
+- service_reprogram_wizard.py: 9
+
+=== PROBLEMAS DETECTADOS ===
+OK: Acciones de reporte encontradas
+FALTA: Problemas al importar pruebas

@@ -1,0 +1,156 @@
+.o_service_order_form {
+    .o_service_order_qr {
+        text-align: center;
+        margin-bottom: 15px;
+        
+        .o_qr_code_image {
+            max-width: 150px;
+            height: auto;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 5px;
+        }
+        
+        .o_qr_code_button {
+            margin-top: 10px;
+        }
+    }
+    
+    .o_service_order_refaction_lines {
+        .o_list_view {
+            .o_data_cell {
+                vertical-align: middle;
+            }
+        }
+    }
+    
+    .o_service_order_status {
+        .badge {
+            font-size: 14px;
+            padding: 6px 10px;
+        }
+    }
+}
+
+.o_service_order_kanban {
+    .o_kanban_record {
+        .o_kanban_record_top {
+            .o_kanban_record_title {
+                font-weight: 500;
+                font-size: 16px;
+            }
+        }
+        
+        .o_kanban_tags {
+            margin-top: 10px;
+            
+            .badge {
+                margin-right: 5px;
+                font-size: 12px;
+            }
+        }
+        
+        .o_kanban_footer {
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid #e0e0e0;
+            
+            .oe_kanban_bottom_right {
+                .btn {
+                    padding: 4px 8px;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}
+
+.o_service_order_calendar {
+    .o_calendar_view {
+        .o_calendar_container {
+            .o_calendar_sidebar {
+                .o_calendar_filter {
+                    .o_calendar_filter_section {
+                        margin-bottom: 15px;
+                        
+                        h5 {
+                            font-size: 14px;
+                            font-weight: 500;
+                            margin-bottom: 10px;
+                        }
+                        
+                        .o_calendar_filter_items {
+                            .o_calendar_filter_item {
+                                margin-bottom: 5px;
+                                
+                                input[type="checkbox"] {
+                                    margin-right: 5px;
+                                }
+                                
+                                label {
+                                    font-weight: normal;
+                                    margin-bottom: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+            .o_calendar_content {
+                .o_calendar_header {
+                    .o_calendar_navigation {
+                        .o_calendar_button_prev,
+                        .o_calendar_button_next {
+                            background-color: transparent;
+                            border: 1px solid #e0e0e0;
+                            padding: 6px 12px;
+                            border-radius: 4px;
+                            
+                            &:hover {
+                                background-color: #f8f9fa;
+                            }
+                        }
+                        
+                        .o_calendar_title {
+                            font-size: 18px;
+                            font-weight: 500;
+                        }
+                        
+                        .o_calendar_button_today {
+                            background-color: #007bff;
+                            color: white;
+                            border: none;
+                            padding: 6px 12px;
+                            border-radius: 4px;
+                            
+                            &:hover {
+                                background-color: #0069d9;
+                            }
+                        }
+                    }
+                    
+                    .o_calendar_view_mode {
+                        .btn {
+                            background-color: transparent;
+                            border: 1px solid #e0e0e0;
+                            padding: 6px 12px;
+                            border-radius: 4px;
+                            margin-right: 5px;
+                            
+                            &:hover {
+                                background-color: #f8f9fa;
+                            }
+                            
+                            &.active {
+                                background-color: #007bff;
+                                color: white;
+                                border-color: #007bff;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

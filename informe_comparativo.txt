@@ -1,0 +1,24 @@
+=== INFORME COMPARATIVO DE ESTÁNDARES ===
+Fecha: Sun Sep 28 14:16:10 CST 2025
+Módulo: inmoser_service_order
+
+=== COMPARATIVO DE LÍMITES DE LÍNEA ===
+Límite de 79 caracteres: 75 errores
+Límite de 88 caracteres: 41 errores
+Límite de 99 caracteres: 14 errores
+Límite de 120 caracteres: 11 errores
+
+=== TIPOS DE ERRORES CON LÍMITE DE 99 CARACTERES ===
+Líneas demasiado largas (E501): 3
+Variables no utilizadas (F841): 3
+
+=== ARCHIVOS CON MÁS ERRORES (LÍMITE 99) ===
+      2 ./tests/test_service_workflows.py
+      2 ./tests/test_service_equipment.py
+      2 ./models/hr_employee_extension.py
+      1 ./wizards/service_reprogram_wizard.py
+      1 ./tests/test_business_rules.py
+
+=== RECOMENDACIÓN DE ESTÁNDAR ===
+Basado en el análisis, se recomienda un límite de línea de 99 caracteres,
+lo que reduce los errores a solo 14, manteniendo un código legible.

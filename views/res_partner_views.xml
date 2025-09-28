@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Vista de formulario extendida para partners -->
+        <record id="res_partner_view_form_inherit" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button name="action_view_service_orders" type="object" class="oe_stat_button" icon="fa-wrench">
+                        <field string="Service Orders" name="service_order_count" widget="statinfo"/>
+                    </button>
+                    <button name="action_view_equipment" type="object" class="oe_stat_button" icon="fa-server">
+                        <field string="Equipment" name="equipment_count" widget="statinfo"/>
+                    </button>
+                </xpath>
+                
+                <xpath expr="//notebook" position="inside">
+                    <page string="Service Information">
+                        <group>
+                            <group>
+                                <field name="is_service_customer"/>
+                                <field name="service_customer_type"/>
+                                <field name="service_preference"/>
+                            </group>
+                            <group>
+                                <field name="service_contact"/>
+                                <field name="service_phone"/>
+                                <field name="service_email"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        
+        <!-- Vista de árbol extendida para partners -->
+        <record id="res_partner_view_tree_inherit" model="ir.ui.view">
+            <field name="name">res.partner.tree.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="attributes">
+                    <attribute name="decoration-info">is_service_customer == True</attribute>
+                </xpath>
+                
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="is_service_customer" optional="show"/>
+                    <field name="service_customer_type" optional="show"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <!-- Vista de búsqueda extendida para partners -->
+        <record id="res_partner_view_search_inherit" model="ir.ui.view">
+            <field name="name">res.partner.search.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[last()]" position="after">
+                    <separator/>
+                    <filter name="service_customers" string="Service Customers" domain="[('is_service_customer', '=', True)]"/>
+                </xpath>
+                
+                <xpath expr="//group" position="inside">
+                    <filter name="group_is_service_customer" string="Is Service Customer" context="{'group_by': 'is_service_customer'}"/>
+                    <filter name="group_service_customer_type" string="Service Customer Type" context="{'group_by': 'service_customer_type'}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

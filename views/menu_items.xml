@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Menú principal -->
+        <menuitem id="menu_service_root" name="Service Management" sequence="65"/>
+        
+        <!-- Submenú de configuración -->
+        <menuitem id="menu_service_config" name="Configuration" parent="menu_service_root" sequence="100"/>
+        
+        <!-- Menú de órdenes de servicio -->
+        <menuitem id="menu_service_order" name="Service Orders" parent="menu_service_root" action="action_service_order" sequence="10"/>
+        
+        <!-- Menú de equipos -->
+        <menuitem id="menu_service_equipment" name="Equipment" parent="menu_service_root" action="action_service_equipment" sequence="20"/>
+        
+        <!-- Menú de tipos de servicio -->
+        <menuitem id="menu_service_type" name="Service Types" parent="menu_service_config" action="action_service_type" sequence="10"/>
+        
+        <!-- Menú de reportes -->
+        <menuitem id="menu_service_reports" name="Reports" parent="menu_service_root" sequence="90"/>
+        
+        <!-- Submenú de reportes -->
+        <menuitem id="menu_service_order_reports" name="Service Orders" parent="menu_service_reports" sequence="10"/>
+        <menuitem id="menu_equipment_reports" name="Equipment" parent="menu_service_reports" sequence="20"/>
+        <menuitem id="menu_technician_reports" name="Technicians" parent="menu_service_reports" sequence="30"/>
+        
+        <!-- Acciones de reportes -->
+        <menuitem id="menu_report_service_order" name="Service Order Report" parent="menu_service_order_reports" action="action_report_service_order" sequence="10"/>
+        <menuitem id="menu_report_service_certificate" name="Service Certificate" parent="menu_service_order_reports" action="action_report_service_certificate" sequence="20"/>
+        <menuitem id="menu_report_equipment_history" name="Equipment History" parent="menu_equipment_reports" action="action_report_equipment_history" sequence="10"/>
+        <menuitem id="menu_report_technician_performance" name="Technician Performance" parent="menu_technician_reports" action="action_report_technician_performance" sequence="10"/>
+        
+        <!-- Vista de calendario -->
+        <menuitem id="menu_service_calendar" name="Service Calendar" parent="menu_service_root" action="action_service_order_calendar" sequence="30"/>
+    </data>
+</odoo>

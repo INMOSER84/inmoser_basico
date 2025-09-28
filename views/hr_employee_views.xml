@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Vista de formulario extendida para empleados -->
+        <record id="hr_employee_view_form_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.form.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button name="action_view_service_orders" type="object" class="oe_stat_button" icon="fa-wrench">
+                        <field string="Service Orders" name="service_order_count" widget="statinfo"/>
+                    </button>
+                </xpath>
+                
+                <xpath expr="//notebook" position="inside">
+                    <page string="Service Information">
+                        <group>
+                            <group>
+                                <field name="is_technician"/>
+                                <field name="technician_code"/>
+                                <field name="specialization"/>
+                            </group>
+                            <group>
+                                <field name="certification"/>
+                                <field name="certification_date"/>
+                                <field name="certification_expiry"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        
+        <!-- Vista de árbol extendida para empleados -->
+        <record id="hr_employee_view_tree_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.tree.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="attributes">
+                    <attribute name="decoration-info">is_technician == True</attribute>
+                </xpath>
+                
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="is_technician" optional="show"/>
+                    <field name="technician_code" optional="show"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <!-- Vista de búsqueda extendida para empleados -->
+        <record id="hr_employee_view_search_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.search.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[last()]" position="after">
+                    <separator/>
+                    <filter name="technicians" string="Technicians" domain="[('is_technician', '=', True)]"/>
+                </xpath>
+                
+                <xpath expr="//group" position="inside">
+                    <filter name="group_is_technician" string="Is Technician" context="{'group_by': 'is_technician'}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

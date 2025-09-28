@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Tarea programada para notificar órdenes de servicio próximas -->
+        <record id="ir_cron_service_order_reminder" model="ir.cron">
+            <field name="name">Service Order: Reminder</field>
+            <field name="model_id" ref="model_service_order"/>
+            <field name="state">code</field>
+            <field name="code">model._send_service_reminders()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall">False</field>
+            <field name="active">True</field>
+        </record>
+        
+        <!-- Tarea programada para verificar garantías de equipos -->
+        <record id="ir_cron_equipment_warranty_check" model="ir.cron">
+            <field name="name">Equipment: Warranty Check</field>
+            <field name="model_id" ref="model_service_equipment"/>
+            <field name="state">code</field>
+            <field name="code">model._check_warranty_expiration()</field>
+            <field name="interval_number">7</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall">False</field>
+            <field name="active">True</field>
+        </record>
+    </data>
+</odoo>

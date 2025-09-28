@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Plantilla de correo para notificación de orden de servicio programada -->
+        <record id="email_template_service_scheduled" model="mail.template">
+            <field name="name">Service Order Scheduled</field>
+            <field name="model_id" ref="model_service_order"/>
+            <field name="subject">Service Order Scheduled - ${object.name}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p>Dear ${object.partner_id.name},</p>
+                    <p>Your service order <strong>${object.name}</strong> has been scheduled for <strong>${object.date_scheduled}</strong>.</p>
+                    <p>Service Type: ${object.service_type_id.name}</p>
+                    <p>Technician: ${object.technician_id.name or 'To be assigned'}</p>
+                    <p>If you have any questions, please contact us.</p>
+                    <p>Thank you,</p>
+                    <p>${user.company_id.name}</p>
+                </div>
+            </field>
+            <field name="auto_delete">True</field>
+            <field name="lang">${object.partner_id.lang}</field>
+        </record>
+        
+        <!-- Plantilla de correo para notificación de orden de servicio completada -->
+        <record id="email_template_service_completed" model="mail.template">
+            <field name="name">Service Order Completed</field>
+            <field name="model_id" ref="model_service_order"/>
+            <field name="subject">Service Order Completed - ${object.name}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p>Dear ${object.partner_id.name},</p>
+                    <p>Your service order <strong>${object.name}</strong> has been completed on <strong>${object.date_completed}</strong>.</p>
+                    <p>Service Type: ${object.service_type_id.name}</p>
+                    <p>Technician: ${object.technician_id.name}</p>
+                    <p>Please find attached the service certificate.</p>
+                    <p>If you have any questions, please contact us.</p>
+                    <p>Thank you,</p>
+                    <p>${user.company_id.name}</p>
+                </div>
+            </field>
+            <field name="auto_delete">True</field>
+            <field name="lang">${object.partner_id.lang}</field>
+        </record>
+    </data>
+</odoo>

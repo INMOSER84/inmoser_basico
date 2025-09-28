@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Plantilla de reporte de rendimiento de técnico -->
+        <template id="report_technician_performance_document">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Technician Performance Report</h2>
+                        <div class="row mt32 mb32">
+                            <div class="col-6">
+                                <strong>Technician:</strong>
+                                <p t-field="doc.name"/>
+                                <strong>Department:</strong>
+                                <p t-field="doc.department_id.name"/>
+                            </div>
+                            <div class="col-6">
+                                <strong>Report Period:</strong>
+                                <p><t t-esc="start_date"/> to <t t-esc="end_date"/></p>
+                                <strong>Report Date:</strong>
+                                <p t-esc="datetime.datetime.now().strftime('%Y-%m-%d')"/>
+                            </div>
+                        </div>
+                        
+                        <h3>Performance Metrics</h3>
+                        <div class="row mb32">
+                            <div class="col-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Completed Orders</h5>
+                                        <p class="card-text display-4"><t t-esc="completed_orders_count"/></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Average Time</h5>
+                                        <p class="card-text display-4"><t t-esc="avg_completion_time"/> hours</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Customer Satisfaction</h5>
+                                        <p class="card-text display-4"><t t-esc="customer_satisfaction"/>%</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Efficiency</h5>
+                                        <p class="card-text display-4"><t t-esc="efficiency"/>%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3>Service Orders</h3>
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Order Reference</th>
+                                    <th>Date</th>
+                                    <th>Service Type</th>
+                                    <th>Equipment</th>
+                                    <th>Duration (hours)</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="service_orders" t-as="order">
+                                    <td><span t-field="order.name"/></td>
+                                    <td><span t-field="order.date_requested"/></td>
+                                    <td><span t-field="order.service_type_id.name"/></td>
+                                    <td><span t-field="order.equipment_id.name"/></td>
+                                    <td><span t-field="order.duration"/></td>
+                                    <td><span t-field="order.state"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+        
+        <!-- Acción de reporte -->
+        <record id="action_report_technician_performance" model="ir.actions.report">
+            <field name="name">Technician Performance</field>
+            <field name="model">hr.employee</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">inmoser_service_order.report_technician_performance_document</field>
+            <field name="report_file">inmoser_service_order.report_technician_performance_document</field>
+            <field name="binding_model_id" ref="hr.model_hr_employee"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

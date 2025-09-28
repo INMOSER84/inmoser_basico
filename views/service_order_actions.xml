@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Acción para vista de calendario -->
+        <record id="action_service_order_calendar" model="ir.actions.act_window">
+            <field name="name">Service Calendar</field>
+            <field name="res_model">service.order</field>
+            <field name="view_mode">calendar</field>
+            <field name="view_id" ref="view_service_order_calendar"/>
+            <field name="context">{'search_default_scheduled': 1, 'search_default_in_progress': 1}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No service orders found
+                </p>
+                <p>
+                    Create your first service order to manage your services.
+                </p>
+            </field>
+        </record>
+        
+        <!-- Acción para vista de kanban -->
+        <record id="action_service_order_kanban" model="ir.actions.act_window">
+            <field name="name">Service Orders Kanban</field>
+            <field name="res_model">service.order</field>
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="view_service_order_kanban"/>
+            <field name="context">{'search_default_draft': 1, 'search_default_scheduled': 1, 'search_default_in_progress': 1}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No service orders found
+                </p>
+                <p>
+                    Create your first service order to manage your services.
+                </p>
+            </field>
+        </record>
+        
+        <!-- Acción para vista de gráfico -->
+        <record id="action_service_order_graph" model="ir.actions.act_window">
+            <field name="name">Service Orders Analysis</field>
+            <field name="res_model">service.order</field>
+            <field name="view_mode">graph</field>
+            <field name="context">{'search_default_completed': 1}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No service orders found
+                </p>
+                <p>
+                    Create your first service order to manage your services.
+                </p>
+            </field>
+        </record>
+        
+        <!-- Acción para vista de pivote -->
+        <record id="action_service_order_pivot" model="ir.actions.act_window">
+            <field name="name">Service Orders Pivot</field>
+            <field name="res_model">service.order</field>
+            <field name="view_mode">pivot</field>
+            <field name="context">{'search_default_completed': 1}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No service orders found
+                </p>
+                <p>
+                    Create your first service order to manage your services.
+                </p>
+            </field>
+        </record>
+        
+        <!-- Acción para informe de rendimiento de técnicos -->
+        <record id="action_technician_performance_report" model="ir.actions.act_window">
+            <field name="name">Technician Performance</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_mode">tree,form,graph,pivot</field>
+            <field name="context">{'search_default_technicians': 1}</field>
+            <field name="domain">[('is_technician', '=', True)]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No technicians found
+                </p>
+                <p>
+                    Create your first technician to manage your services.
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

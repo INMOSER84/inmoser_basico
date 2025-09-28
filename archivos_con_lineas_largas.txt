@@ -1,0 +1,14 @@
+./controllers/client_portal.py
+./models/account_integration.py
+./models/hr_integration.py
+./models/qr_code_generator.py
+./models/res_partner_extension.py
+./models/service_complete_wizard.py
+./models/service_equipment.py
+./models/service_order_business_logic.py
+./models/service_order_refaction_line.py
+./models/stock_integration.py
+./tests/test_service_order.py
+./tests/test_service_workflows.py
+./wizards/service_complete_wizard.py
+./wizards/service_complete_wizard_line.py

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Plantilla de certificado de servicio -->
+        <template id="report_service_certificate_document">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Service Certificate</h2>
+                        <div class="row mt32 mb32">
+                            <div class="col-6">
+                                <strong>Service Order:</strong>
+                                <p t-field="doc.name"/>
+                                <strong>Service Type:</strong>
+                                <p t-field="doc.service_type_id.name"/>
+                                <strong>Equipment:</strong>
+                                <p t-field="doc.equipment_id.name"/>
+                            </div>
+                            <div class="col-6">
+                                <strong>Customer:</strong>
+                                <p t-field="doc.partner_id.name"/>
+                                <strong>Technician:</strong>
+                                <p t-field="doc.technician_id.name"/>
+                                <strong>Completion Date:</strong>
+                                <p t-field="doc.date_completed"/>
+                            </div>
+                        </div>
+                        
+                        <h3>Service Details</h3>
+                        <p t-field="doc.description"/>
+                        
+                        <h3>Work Performed</h3>
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Unit Price</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="doc.refaction_line_ids" t-as="line">
+                                    <td><span t-field="line.product_id.name"/></td>
+                                    <td><span t-field="line.quantity"/></td>
+                                    <td><span t-field="line.unit_price"/></td>
+                                    <td><span t-field="line.subtotal"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="row mt32">
+                            <div class="col-6">
+                                <p>Technician Signature:</p>
+                                <div class="border-bottom border-dark" style="height: 80px;"></div>
+                            </div>
+                            <div class="col-6">
+                                <p>Customer Signature:</p>
+                                <div class="border-bottom border-dark" style="height: 80px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+        
+        <!-- Acción de reporte -->
+        <record id="action_report_service_certificate" model="ir.actions.report">
+            <field name="name">Service Certificate</field>
+            <field name="model">service.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">inmoser_service_order.report_service_certificate_document</field>
+            <field name="report_file">inmoser_service_order.report_service_certificate_document</field>
+            <field name="binding_model_id" ref="model_service_order"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

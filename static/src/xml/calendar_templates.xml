@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="template" xml:space="preserve">
+    <!-- Plantilla para vista de calendario de órdenes de servicio -->
+    <t t-name="service_order_calendar_view" owl="1">
+        <div class="o_service_order_calendar">
+            <div class="o_calendar_view">
+                <div class="o_calendar_container">
+                    <div class="o_calendar_sidebar">
+                        <div class="o_calendar_filter">
+                            <h4>Filters</h4>
+                            <div class="o_calendar_filter_section">
+                                <h5>Technicians</h5>
+                                <div class="o_calendar_filter_items">
+                                    <t t-foreach="technicians" t-as="technician">
+                                        <div class="o_calendar_filter_item">
+                                            <input type="checkbox" t-att-id="'technician_' + technician.id" t-att-value="technician.id"/>
+                                            <label t-att-for="'technician_' + technician.id"><t t-esc="technician.name"/></label>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                            <div class="o_calendar_filter_section">
+                                <h5>Service Types</h5>
+                                <div class="o_calendar_filter_items">
+                                    <t t-foreach="service_types" t-as="service_type">
+                                        <div class="o_calendar_filter_item">
+                                            <input type="checkbox" t-att-id="'service_type_' + service_type.id" t-att-value="service_type.id"/>
+                                            <label t-att-for="'service_type_' + service_type.id"><t t-esc="service_type.name"/></label>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="o_calendar_content">
+                        <div class="o_calendar_header">
+                            <div class="o_calendar_navigation">
+                                <button class="btn btn-secondary o_calendar_button_prev">
+                                    <i class="fa fa-chevron-left"></i>
+                                </button>
+                                <div class="o_calendar_title">June 2023</div>
+                                <button class="btn btn-secondary o_calendar_button_next">
+                                    <i class="fa fa-chevron-right"></i>
+                                </button>
+                                <button class="btn btn-secondary o_calendar_button_today">Today</button>
+                            </div>
+                            <div class="o_calendar_view_mode">
+                                <button class="btn btn-secondary o_calendar_button_day">Day</button>
+                                <button class="btn btn-secondary o_calendar_button_week">Week</button>
+                                <button class="btn btn-secondary o_calendar_button_month">Month</button>
+                            </div>
+                        </div>
+                        <div class="o_calendar_body">
+                            <!-- Contenido del calendario generado dinámicamente -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+    
+    <!-- Plantilla para evento de calendario -->
+    <t t-name="service_order_calendar_event" owl="1">
+        <div class="o_service_order_event" t-att-class="event_class">
+            <div class="o_event_time">
+                <span class="o_event_start_time"><t t-esc="format_time(event.start)"/></span>
+                <span>-</span>
+                <span class="o_event_end_time"><t t-esc="format_time(event.end)"/></span>
+            </div>
+            <div class="o_event_content">
+                <div class="o_event_title"><t t-esc="event.title"/></div>
+                <div class="o_event_details">
+                    <span class="o_event_technician"><t t-esc="event.technician"/></span>
+                    <span class="o_event_service_type"><t t-esc="event.service_type"/></span>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

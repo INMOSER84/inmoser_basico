@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Plantilla para portal de cliente -->
+        <template id="portal_my_service_orders" name="My Service Orders">
+            <t t-call="portal.portal_layout">
+                <t t-set="breadcrumbs_searchbar" t-value="True"/>
+                
+                <div class="o_portal_my_home">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <t t-call="portal.portal_searchbar">
+                                    <t t-set="title">Service Orders</t>
+                                </t>
+                                
+                                <t t-if="not service_orders">
+                                    <div class="alert alert-warning">
+                                        There are no service orders.
+                                    </div>
+                                </t>
+                                
+                                <t t-if="service_orders">
+                                    <div class="panel panel-default">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover o_portal_my_doc_table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Number</th>
+                                                        <th>Service Type</th>
+                                                        <th>Date</th>
+                                                        <th>Equipment</th>
+                                                        <th>Status</th>
+                                                        <th class="text-right">Amount</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr t-foreach="service_orders" t-as="order">
+                                                        <td>
+                                                            <a t-att-href="order.get_portal_url()">
+                                                                <span t-field="order.name"/>
+                                                            </a>
+                                                        </td>
+                                                        <td><span t-field="order.service_type_id.name"/></td>
+                                                        <td><span t-field="order.date_requested"/></td>
+                                                        <td><span t-field="order.equipment_id.name"/></td>
+                                                        <td>
+                                                            <span class="badge badge-pill" t-att-class="{
+                                                                'badge-success': order.state == 'completed',
+                                                                'badge-warning': order.state in ('scheduled', 'in_progress'),
+                                                                'badge-info': order.state == 'draft',
+                                                                'badge-danger': order.state == 'cancelled'
+                                                            }">
+                                                                <span t-field="order.state"/>
+                                                            </span>
+                                                        </td>
+                                                        <td class="text-right">
+                                                            <span t-field="order.amount_total"/>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="text-center">
+                                        <t t-call="portal.pager"/>
+                                    </div>
+                                </t>
+                            </div>
+                            
+                            <div class="col-lg-4">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Filters</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="list-group">
+                                            <a href="#" class="list-group-item active">
+                                                All Service Orders
+                                            </a>
+                                            <a href="#" class="list-group-item">
+                                                In Progress
+                                            </a>
+                                            <a href="#" class="list-group-item">
+                                                Completed
+                                            </a>
+                                            <a href="#" class="list-group-item">
+                                                Cancelled
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+        
+        <!-- Plantilla para detalle de orden de servicio en portal -->
+        <template id="portal_service_order_page" name="Service Order">
+            <t t-call="portal.portal_layout">
+                <t t-set="breadcrumbs_searchbar" t-value="True"/>
+                
+                <div class="o_portal_my_home">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">
+                                            Service Order <span t-field="service_order.name"/>
+                                        </h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <strong>Service Type:</strong>
+                                                <p t-field="service_order.service_type_id.name"/>
+                                                
+                                                <strong>Equipment:</strong>
+                                                <p t-field="service_order.equipment_id.name"/>
+                                                
+                                                <strong>Technician:</strong>
+                                                <p t-field="service_order.technician_id.name"/>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <strong>Requested Date:</strong>
+                                                <p t-field="service_order.date_requested"/>
+                                                
+                                                <strong>Scheduled Date:</strong>
+                                                <p t-field="service_order.date_scheduled"/>
+                                                
+                                                <strong>Status:</strong>
+                                                <p>
+                                                    <span class="badge badge-pill" t-att-class="{
+                                                        'badge-success': service_order.state == 'completed',
+                                                        'badge-warning': service_order.state in ('scheduled', 'in_progress'),
+                                                        'badge-info': service_order.state == 'draft',
+                                                        'badge-danger': service_order.state == 'cancelled'
+                                                    }">
+                                                        <span t-field="service_order.state"/>
+                                                    </span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        
+                                        <hr/>
+                                        
+                                        <h4>Description</h4>
+                                        <p t-field="service_order.description"/>
+                                        
+                                        <h4>Notes</h4>
+                                        <p t-field="service_order.notes"/>
+                                        
+                                        <div class="text-center mt32">
+                                            <a t-att-href="'/report/pdf/inmoser_service_order.report_service_order_document/%s' % service_order.id" class="btn btn-primary">
+                                                <i class="fa fa-print"/> Print
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-4">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Actions</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="list-group">
+                                            <a href="#" class="list-group-item">
+                                                <i class="fa fa-calendar"/> Reschedule
+                                            </a>
+                                            <a href="#" class="list-group-item">
+                                                <i class="fa fa-comment"/> Add Comment
+                                            </a>
+                                            <a href="#" class="list-group-item">
+                                                <i class="fa fa-file-pdf-o"/> Download Certificate
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>
